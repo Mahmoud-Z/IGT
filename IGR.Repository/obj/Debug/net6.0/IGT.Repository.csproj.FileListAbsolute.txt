@@ -1,0 +1,12 @@
+F:\Work\IGT\IGR.Repository\bin\Debug\net6.0\IGT.Repository.deps.json
+F:\Work\IGT\IGR.Repository\bin\Debug\net6.0\IGT.Repository.dll
+F:\Work\IGT\IGR.Repository\bin\Debug\net6.0\IGT.Repository.pdb
+F:\Work\IGT\IGR.Repository\obj\Debug\net6.0\IGT.Repository.csproj.AssemblyReference.cache
+F:\Work\IGT\IGR.Repository\obj\Debug\net6.0\IGT.Repository.GeneratedMSBuildEditorConfig.editorconfig
+F:\Work\IGT\IGR.Repository\obj\Debug\net6.0\IGT.Repository.AssemblyInfoInputs.cache
+F:\Work\IGT\IGR.Repository\obj\Debug\net6.0\IGT.Repository.AssemblyInfo.cs
+F:\Work\IGT\IGR.Repository\obj\Debug\net6.0\IGT.Repository.csproj.CoreCompileInputs.cache
+F:\Work\IGT\IGR.Repository\obj\Debug\net6.0\IGT.Repository.dll
+F:\Work\IGT\IGR.Repository\obj\Debug\net6.0\refint\IGT.Repository.dll
+F:\Work\IGT\IGR.Repository\obj\Debug\net6.0\IGT.Repository.pdb
+F:\Work\IGT\IGR.Repository\obj\Debug\net6.0\ref\IGT.Repository.dll

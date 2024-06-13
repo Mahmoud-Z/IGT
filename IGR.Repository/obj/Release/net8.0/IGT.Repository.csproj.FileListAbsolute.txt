@@ -1,0 +1,15 @@
+F:\Work\IGT\IGR.Repository\bin\Release\net8.0\IGT.Repository.deps.json
+F:\Work\IGT\IGR.Repository\bin\Release\net8.0\IGT.Repository.dll
+F:\Work\IGT\IGR.Repository\bin\Release\net8.0\IGT.Repository.pdb
+F:\Work\IGT\IGR.Repository\bin\Release\net8.0\IGT.Data.dll
+F:\Work\IGT\IGR.Repository\bin\Release\net8.0\IGT.Data.pdb
+F:\Work\IGT\IGR.Repository\obj\Release\net8.0\IGT.Repository.csproj.AssemblyReference.cache
+F:\Work\IGT\IGR.Repository\obj\Release\net8.0\IGT.Repository.GeneratedMSBuildEditorConfig.editorconfig
+F:\Work\IGT\IGR.Repository\obj\Release\net8.0\IGT.Repository.AssemblyInfoInputs.cache
+F:\Work\IGT\IGR.Repository\obj\Release\net8.0\IGT.Repository.AssemblyInfo.cs
+F:\Work\IGT\IGR.Repository\obj\Release\net8.0\IGT.Repository.csproj.CoreCompileInputs.cache
+F:\Work\IGT\IGR.Repository\obj\Release\net8.0\IGT.Repo.0C551286.Up2Date
+F:\Work\IGT\IGR.Repository\obj\Release\net8.0\IGT.Repository.dll
+F:\Work\IGT\IGR.Repository\obj\Release\net8.0\refint\IGT.Repository.dll
+F:\Work\IGT\IGR.Repository\obj\Release\net8.0\IGT.Repository.pdb
+F:\Work\IGT\IGR.Repository\obj\Release\net8.0\ref\IGT.Repository.dll

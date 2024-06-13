@@ -1,0 +1,17 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Name": "IGT.Api\\IGT.Api.csproj",
+        "Action": "Start",
+        "DebugTarget": "IGT.Api"
+      },
+      {
+        "Name": "IGT.front\\IGT.front.esproj",
+        "Action": "Start",
+        "DebugTarget": "localhost (Chrome)"
+      }
+    ]
+  }
+]

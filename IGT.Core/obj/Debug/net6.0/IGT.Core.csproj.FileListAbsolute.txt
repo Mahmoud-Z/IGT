@@ -1,0 +1,12 @@
+F:\Work\IGT\IGT.Core\bin\Debug\net6.0\IGT.Core.deps.json
+F:\Work\IGT\IGT.Core\bin\Debug\net6.0\IGT.Core.dll
+F:\Work\IGT\IGT.Core\bin\Debug\net6.0\IGT.Core.pdb
+F:\Work\IGT\IGT.Core\obj\Debug\net6.0\IGT.Core.csproj.AssemblyReference.cache
+F:\Work\IGT\IGT.Core\obj\Debug\net6.0\IGT.Core.GeneratedMSBuildEditorConfig.editorconfig
+F:\Work\IGT\IGT.Core\obj\Debug\net6.0\IGT.Core.AssemblyInfoInputs.cache
+F:\Work\IGT\IGT.Core\obj\Debug\net6.0\IGT.Core.AssemblyInfo.cs
+F:\Work\IGT\IGT.Core\obj\Debug\net6.0\IGT.Core.csproj.CoreCompileInputs.cache
+F:\Work\IGT\IGT.Core\obj\Debug\net6.0\IGT.Core.dll
+F:\Work\IGT\IGT.Core\obj\Debug\net6.0\refint\IGT.Core.dll
+F:\Work\IGT\IGT.Core\obj\Debug\net6.0\IGT.Core.pdb
+F:\Work\IGT\IGT.Core\obj\Debug\net6.0\ref\IGT.Core.dll

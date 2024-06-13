@@ -1,0 +1,14 @@
+F:\Work\IGT\IGT.Data\bin\Release\net8.0\IGT.Data.deps.json
+F:\Work\IGT\IGT.Data\bin\Release\net8.0\IGT.Data.runtimeconfig.json
+F:\Work\IGT\IGT.Data\bin\Release\net8.0\IGT.Data.dll
+F:\Work\IGT\IGT.Data\bin\Release\net8.0\IGT.Data.pdb
+F:\Work\IGT\IGT.Data\obj\Release\net8.0\IGT.Data.csproj.AssemblyReference.cache
+F:\Work\IGT\IGT.Data\obj\Release\net8.0\IGT.Data.GeneratedMSBuildEditorConfig.editorconfig
+F:\Work\IGT\IGT.Data\obj\Release\net8.0\IGT.Data.AssemblyInfoInputs.cache
+F:\Work\IGT\IGT.Data\obj\Release\net8.0\IGT.Data.AssemblyInfo.cs
+F:\Work\IGT\IGT.Data\obj\Release\net8.0\IGT.Data.csproj.CoreCompileInputs.cache
+F:\Work\IGT\IGT.Data\obj\Release\net8.0\IGT.Data.dll
+F:\Work\IGT\IGT.Data\obj\Release\net8.0\refint\IGT.Data.dll
+F:\Work\IGT\IGT.Data\obj\Release\net8.0\IGT.Data.pdb
+F:\Work\IGT\IGT.Data\obj\Release\net8.0\IGT.Data.genruntimeconfig.cache
+F:\Work\IGT\IGT.Data\obj\Release\net8.0\ref\IGT.Data.dll

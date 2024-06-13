@@ -1,0 +1,160 @@
+[
+  {
+    "ContainingType": "IGT.Api.Controllers.RoleManagmentController",
+    "Method": "AddRole",
+    "RelativePath": "addRole",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "IGT.Core.Dtos.RoleManagment.AddRoleInputDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "IGT.Api.Controllers.UserManagmentController",
+    "Method": "addUser",
+    "RelativePath": "addUser",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "IGT.Service.Helpers.RegisterModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "IGT.Api.Controllers.AuthenticationController",
+    "Method": "AddRoleAsync",
+    "RelativePath": "api/Authentication/addrole",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "IGT.Service.Helpers.AddRoleModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "IGT.Api.Controllers.AuthenticationController",
+    "Method": "forgetPassword",
+    "RelativePath": "api/Authentication/forgetPassword",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "IGT.Service.Helpers.TokenRequestModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "IGT.Api.Controllers.AuthenticationController",
+    "Method": "login",
+    "RelativePath": "api/Authentication/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "IGT.Service.Helpers.TokenRequestModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "IGT.Api.Controllers.AuthenticationController",
+    "Method": "testEmail",
+    "RelativePath": "api/Authentication/testEmail",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "IGT.Api.Controllers.RoleManagmentController",
+    "Method": "DeleteRole",
+    "RelativePath": "deleteRole",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "roleName",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "IGT.Api.Controllers.UserManagmentController",
+    "Method": "getAllUsers",
+    "RelativePath": "getAllUsers",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "IGT.Api.Controllers.RoleManagmentController",
+    "Method": "GetRoles",
+    "RelativePath": "getRoles",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "roleId",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "IGT.Api.Controllers.HomeController",
+    "Method": "test",
+    "RelativePath": "test",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "IGT.Api.Controllers.RoleManagmentController",
+    "Method": "UpdateRole",
+    "RelativePath": "updateRole",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "IGT.Core.Dtos.RoleManagment.AddRoleInputDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

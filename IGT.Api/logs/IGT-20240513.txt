@@ -1,0 +1,212 @@
+2024-05-13 06:18:51.607 +03:00 [DBG] An 'IServiceProvider' was created for internal use by Entity Framework.
+2024-05-13 06:18:52.300 +03:00 [DBG] The index {'UserId'} was not created on entity type 'IdentityUserRole<string>' as the properties are already covered by the index {'UserId', 'RoleId'}.
+2024-05-13 06:18:52.304 +03:00 [DBG] The index {'UserId'} was not created on entity type 'IdentityUserToken<string>' as the properties are already covered by the index {'UserId', 'LoginProvider', 'Name'}.
+2024-05-13 06:18:52.305 +03:00 [DBG] The index {'RoleId'} was not created on entity type 'RolePrivilege (Dictionary<string, object>)' as the properties are already covered by the index {'RoleId', 'Id'}.
+2024-05-13 06:18:52.452 +03:00 [DBG] The property 'IdentityRole.Discriminator' was created in shadow state because there are no eligible CLR members with a matching name.
+2024-05-13 06:18:52.586 +03:00 [DBG] Entity Framework Core 8.0.2 initialized 'AkramDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:8.0.2' with options: None
+2024-05-13 06:18:52.597 +03:00 [DBG] Creating DbConnection.
+2024-05-13 06:18:52.685 +03:00 [DBG] Created DbConnection. (85ms).
+2024-05-13 06:18:52.689 +03:00 [DBG] Migrating using database 'AkramDBTest' on server 'DESKTOP-NT39CCP\MSSQLSERVERZ'.
+2024-05-13 06:18:52.696 +03:00 [DBG] Opening connection to database 'AkramDBTest' on server 'DESKTOP-NT39CCP\MSSQLSERVERZ'.
+2024-05-13 06:18:54.124 +03:00 [DBG] Opened connection to database 'AkramDBTest' on server 'DESKTOP-NT39CCP\MSSQLSERVERZ'.
+2024-05-13 06:18:54.130 +03:00 [DBG] Creating DbCommand for 'ExecuteNonQuery'.
+2024-05-13 06:18:54.139 +03:00 [DBG] Created DbCommand for 'ExecuteNonQuery' (7ms).
+2024-05-13 06:18:54.142 +03:00 [DBG] Initialized DbCommand for 'ExecuteNonQuery' (13ms).
+2024-05-13 06:18:54.150 +03:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-05-13 06:18:54.180 +03:00 [INF] Executed DbCommand (29ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-05-13 06:18:54.184 +03:00 [DBG] Closing connection to database 'AkramDBTest' on server 'DESKTOP-NT39CCP\MSSQLSERVERZ'.
+2024-05-13 06:18:54.193 +03:00 [DBG] Closed connection to database 'AkramDBTest' on server 'DESKTOP-NT39CCP\MSSQLSERVERZ' (5ms).
+2024-05-13 06:18:54.198 +03:00 [DBG] Creating DbCommand for 'ExecuteScalar'.
+2024-05-13 06:18:54.200 +03:00 [DBG] Created DbCommand for 'ExecuteScalar' (2ms).
+2024-05-13 06:18:54.201 +03:00 [DBG] Initialized DbCommand for 'ExecuteScalar' (3ms).
+2024-05-13 06:18:54.202 +03:00 [DBG] Opening connection to database 'AkramDBTest' on server 'DESKTOP-NT39CCP\MSSQLSERVERZ'.
+2024-05-13 06:18:54.204 +03:00 [DBG] Opened connection to database 'AkramDBTest' on server 'DESKTOP-NT39CCP\MSSQLSERVERZ'.
+2024-05-13 06:18:54.209 +03:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-05-13 06:18:54.240 +03:00 [INF] Executed DbCommand (32ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-05-13 06:18:54.243 +03:00 [DBG] Closing connection to database 'AkramDBTest' on server 'DESKTOP-NT39CCP\MSSQLSERVERZ'.
+2024-05-13 06:18:54.245 +03:00 [DBG] Closed connection to database 'AkramDBTest' on server 'DESKTOP-NT39CCP\MSSQLSERVERZ' (1ms).
+2024-05-13 06:18:54.247 +03:00 [DBG] Opening connection to database 'AkramDBTest' on server 'DESKTOP-NT39CCP\MSSQLSERVERZ'.
+2024-05-13 06:18:54.248 +03:00 [DBG] Opened connection to database 'AkramDBTest' on server 'DESKTOP-NT39CCP\MSSQLSERVERZ'.
+2024-05-13 06:18:54.249 +03:00 [DBG] Creating DbCommand for 'ExecuteNonQuery'.
+2024-05-13 06:18:54.250 +03:00 [DBG] Created DbCommand for 'ExecuteNonQuery' (1ms).
+2024-05-13 06:18:54.251 +03:00 [DBG] Initialized DbCommand for 'ExecuteNonQuery' (2ms).
+2024-05-13 06:18:54.253 +03:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-05-13 06:18:54.255 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-05-13 06:18:54.259 +03:00 [DBG] Closing connection to database 'AkramDBTest' on server 'DESKTOP-NT39CCP\MSSQLSERVERZ'.
+2024-05-13 06:18:54.260 +03:00 [DBG] Closed connection to database 'AkramDBTest' on server 'DESKTOP-NT39CCP\MSSQLSERVERZ' (1ms).
+2024-05-13 06:18:54.262 +03:00 [DBG] Creating DbCommand for 'ExecuteScalar'.
+2024-05-13 06:18:54.263 +03:00 [DBG] Created DbCommand for 'ExecuteScalar' (1ms).
+2024-05-13 06:18:54.264 +03:00 [DBG] Initialized DbCommand for 'ExecuteScalar' (2ms).
+2024-05-13 06:18:54.265 +03:00 [DBG] Opening connection to database 'AkramDBTest' on server 'DESKTOP-NT39CCP\MSSQLSERVERZ'.
+2024-05-13 06:18:54.267 +03:00 [DBG] Opened connection to database 'AkramDBTest' on server 'DESKTOP-NT39CCP\MSSQLSERVERZ'.
+2024-05-13 06:18:54.268 +03:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-05-13 06:18:54.279 +03:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-05-13 06:18:54.281 +03:00 [DBG] Closing connection to database 'AkramDBTest' on server 'DESKTOP-NT39CCP\MSSQLSERVERZ'.
+2024-05-13 06:18:54.282 +03:00 [DBG] Closed connection to database 'AkramDBTest' on server 'DESKTOP-NT39CCP\MSSQLSERVERZ' (1ms).
+2024-05-13 06:18:54.296 +03:00 [DBG] Opening connection to database 'AkramDBTest' on server 'DESKTOP-NT39CCP\MSSQLSERVERZ'.
+2024-05-13 06:18:54.297 +03:00 [DBG] Opened connection to database 'AkramDBTest' on server 'DESKTOP-NT39CCP\MSSQLSERVERZ'.
+2024-05-13 06:18:54.299 +03:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2024-05-13 06:18:54.300 +03:00 [DBG] Created DbCommand for 'ExecuteReader' (1ms).
+2024-05-13 06:18:54.301 +03:00 [DBG] Initialized DbCommand for 'ExecuteReader' (2ms).
+2024-05-13 06:18:54.302 +03:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-05-13 06:18:54.315 +03:00 [INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-05-13 06:18:54.319 +03:00 [DBG] Closing data reader to 'AkramDBTest' on server 'DESKTOP-NT39CCP\MSSQLSERVERZ'.
+2024-05-13 06:18:54.321 +03:00 [DBG] A data reader for 'AkramDBTest' on server 'DESKTOP-NT39CCP\MSSQLSERVERZ' is being disposed after spending 3ms reading results.
+2024-05-13 06:18:54.326 +03:00 [DBG] Closing connection to database 'AkramDBTest' on server 'DESKTOP-NT39CCP\MSSQLSERVERZ'.
+2024-05-13 06:18:54.327 +03:00 [DBG] Closed connection to database 'AkramDBTest' on server 'DESKTOP-NT39CCP\MSSQLSERVERZ' (1ms).
+2024-05-13 06:18:54.343 +03:00 [INF] No migrations were applied. The database is already up to date.
+2024-05-13 06:18:54.345 +03:00 [DBG] 'AkramDbContext' disposed.
+2024-05-13 06:18:54.348 +03:00 [DBG] Disposing connection to database 'AkramDBTest' on server 'DESKTOP-NT39CCP\MSSQLSERVERZ'.
+2024-05-13 06:18:54.350 +03:00 [DBG] Disposed connection to database '' on server '' (2ms).
+2024-05-13 06:18:54.464 +03:00 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.TryParseModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+2024-05-13 06:18:54.660 +03:00 [DBG] Hosting starting
+2024-05-13 06:18:54.700 +03:00 [INF] User profile is available. Using 'C:\Users\Mahmoud\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-05-13 06:18:54.712 +03:00 [DBG] Reading data from file 'C:\Users\Mahmoud\AppData\Local\ASP.NET\DataProtection-Keys\key-581d007c-de32-4ef7-bbf6-929ec5119e74.xml'.
+2024-05-13 06:18:54.734 +03:00 [DBG] Reading data from file 'C:\Users\Mahmoud\AppData\Local\ASP.NET\DataProtection-Keys\key-59c2a83d-4957-4799-80ce-9765b1403343.xml'.
+2024-05-13 06:18:54.750 +03:00 [DBG] Reading data from file 'C:\Users\Mahmoud\AppData\Local\ASP.NET\DataProtection-Keys\key-cd3da43b-3018-4678-9b4c-bdd15acccbb6.xml'.
+2024-05-13 06:18:54.773 +03:00 [DBG] Found key {581d007c-de32-4ef7-bbf6-929ec5119e74}.
+2024-05-13 06:18:54.784 +03:00 [DBG] Found key {59c2a83d-4957-4799-80ce-9765b1403343}.
+2024-05-13 06:18:54.791 +03:00 [DBG] Found key {cd3da43b-3018-4678-9b4c-bdd15acccbb6}.
+2024-05-13 06:18:54.797 +03:00 [DBG] Considering key {59c2a83d-4957-4799-80ce-9765b1403343} with expiration date 2024-08-01 11:47:15Z as default key.
+2024-05-13 06:18:54.802 +03:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2024-05-13 06:18:54.805 +03:00 [DBG] Decrypting secret element using Windows DPAPI.
+2024-05-13 06:18:54.807 +03:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2024-05-13 06:18:54.811 +03:00 [DBG] Opening CNG algorithm 'AES' from provider 'null' with chaining mode CBC.
+2024-05-13 06:18:54.813 +03:00 [DBG] Opening CNG algorithm 'SHA256' from provider 'null' with HMAC.
+2024-05-13 06:18:54.815 +03:00 [DBG] Using key {59c2a83d-4957-4799-80ce-9765b1403343} as the default key.
+2024-05-13 06:18:54.817 +03:00 [DBG] Key ring with default key {59c2a83d-4957-4799-80ce-9765b1403343} was loaded during application startup.
+2024-05-13 06:18:54.966 +03:00 [WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+2024-05-13 06:18:55.042 +03:00 [DBG] Connection id "0HN3IVDLSGRL7" accepted.
+2024-05-13 06:18:55.042 +03:00 [DBG] Connection id "0HN3IVDLSGRL6" accepted.
+2024-05-13 06:18:55.042 +03:00 [INF] Now listening on: https://localhost:7210
+2024-05-13 06:18:55.045 +03:00 [DBG] Connection id "0HN3IVDLSGRL7" started.
+2024-05-13 06:18:55.045 +03:00 [DBG] Connection id "0HN3IVDLSGRL6" started.
+2024-05-13 06:18:55.046 +03:00 [INF] Now listening on: http://localhost:5210
+2024-05-13 06:18:55.048 +03:00 [DBG] Loaded hosting startup assembly IGT.Api
+2024-05-13 06:18:55.049 +03:00 [DBG] Loaded hosting startup assembly Microsoft.WebTools.ApiEndpointDiscovery
+2024-05-13 06:18:55.050 +03:00 [DBG] Loaded hosting startup assembly Microsoft.AspNetCore.Watch.BrowserRefresh
+2024-05-13 06:18:55.051 +03:00 [DBG] Loaded hosting startup assembly Microsoft.WebTools.BrowserLink.Net
+2024-05-13 06:18:55.106 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-05-13 06:18:55.108 +03:00 [INF] Hosting environment: Development
+2024-05-13 06:18:55.109 +03:00 [INF] Content root path: F:\Work\IGT\IGT.Api
+2024-05-13 06:18:55.110 +03:00 [DBG] Hosting started
+2024-05-13 06:18:55.831 +03:00 [DBG] Connection id "0HN3IVDLSGRL8" accepted.
+2024-05-13 06:18:55.839 +03:00 [DBG] Connection id "0HN3IVDLSGRL8" started.
+2024-05-13 06:18:55.875 +03:00 [DBG] Connection id "0HN3IVDLSGRL8" received FIN.
+2024-05-13 06:18:55.877 +03:00 [DBG] Connection id "0HN3IVDLSGRL9" accepted.
+2024-05-13 06:18:55.879 +03:00 [DBG] Connection id "0HN3IVDLSGRL9" started.
+2024-05-13 06:18:55.883 +03:00 [DBG] Connection id "0HN3IVDLSGRL9" received FIN.
+2024-05-13 06:18:55.884 +03:00 [DBG] Connection id "0HN3IVDLSGRLA" accepted.
+2024-05-13 06:18:55.887 +03:00 [DBG] Connection id "0HN3IVDLSGRLA" started.
+2024-05-13 06:18:55.890 +03:00 [DBG] Failed to authenticate HTTPS connection.
+System.Security.Authentication.AuthenticationException: Authentication failed, see inner exception.
+ ---> System.ComponentModel.Win32Exception (0x80090327): An unknown error occurred while processing the certificate.
+   --- End of inner exception stack trace ---
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](Boolean receiveFirst, Byte[] reAuthenticationData, CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ProcessAuthenticationWithTelemetryAsync(Boolean isAsync, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+2024-05-13 06:18:55.890 +03:00 [DBG] Failed to authenticate HTTPS connection.
+System.Security.Authentication.AuthenticationException: Authentication failed, see inner exception.
+ ---> System.ComponentModel.Win32Exception (0x80090327): An unknown error occurred while processing the certificate.
+   --- End of inner exception stack trace ---
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](Boolean receiveFirst, Byte[] reAuthenticationData, CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ProcessAuthenticationWithTelemetryAsync(Boolean isAsync, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+2024-05-13 06:18:55.900 +03:00 [DBG] Connection 0HN3IVDLSGRLA established using the following protocol: "Tls12"
+2024-05-13 06:18:55.909 +03:00 [DBG] Connection id "0HN3IVDLSGRL8" stopped.
+2024-05-13 06:18:55.909 +03:00 [DBG] Connection id "0HN3IVDLSGRL9" stopped.
+2024-05-13 06:18:55.912 +03:00 [DBG] Connection id "0HN3IVDLSGRL8" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-05-13 06:18:55.915 +03:00 [DBG] Connection id "0HN3IVDLSGRL9" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-05-13 06:18:55.996 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7210/swagger - null null
+2024-05-13 06:18:56.138 +03:00 [DBG] Wildcard detected, all requests with hosts will be allowed.
+2024-05-13 06:18:56.157 +03:00 [DBG] No candidates found for the request path '/swagger'
+2024-05-13 06:18:56.159 +03:00 [DBG] Request did not match any endpoints
+2024-05-13 06:18:56.180 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7210/swagger - 301 0 null 190.8132ms
+2024-05-13 06:18:56.185 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7210/swagger/index.html - null null
+2024-05-13 06:18:56.191 +03:00 [DBG] No candidates found for the request path '/swagger/index.html'
+2024-05-13 06:18:56.192 +03:00 [DBG] Request did not match any endpoints
+2024-05-13 06:18:56.233 +03:00 [DBG] Response markup is scheduled to include Browser Link script injection.
+2024-05-13 06:18:56.235 +03:00 [DBG] Response markup is scheduled to include browser refresh script injection.
+2024-05-13 06:18:56.263 +03:00 [DBG] Response markup was updated to include Browser Link script injection.
+2024-05-13 06:18:56.267 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7210/swagger/swagger-ui.css - null null
+2024-05-13 06:18:56.270 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7210/swagger/swagger-ui-bundle.js - null null
+2024-05-13 06:18:56.272 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7210/swagger/swagger-ui-standalone-preset.js - null null
+2024-05-13 06:18:56.273 +03:00 [DBG] Response markup was updated to include browser refresh script injection.
+2024-05-13 06:18:56.276 +03:00 [DBG] No candidates found for the request path '/swagger/swagger-ui.css'
+2024-05-13 06:18:56.278 +03:00 [DBG] No candidates found for the request path '/swagger/swagger-ui-bundle.js'
+2024-05-13 06:18:56.280 +03:00 [DBG] No candidates found for the request path '/swagger/swagger-ui-standalone-preset.js'
+2024-05-13 06:18:56.282 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7210/swagger/index.html - 200 null text/html;charset=utf-8 96.6138ms
+2024-05-13 06:18:56.282 +03:00 [DBG] Request did not match any endpoints
+2024-05-13 06:18:56.284 +03:00 [DBG] Request did not match any endpoints
+2024-05-13 06:18:56.283 +03:00 [DBG] Request did not match any endpoints
+2024-05-13 06:18:56.290 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7210/_framework/aspnetcore-browser-refresh.js - null null
+2024-05-13 06:18:56.299 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7210/_vs/browserLink - null null
+2024-05-13 06:18:56.339 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7210/_framework/aspnetcore-browser-refresh.js - 200 13750 application/javascript; charset=utf-8 48.5751ms
+2024-05-13 06:18:56.353 +03:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2024-05-13 06:18:56.357 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7210/swagger/swagger-ui.css - 200 143632 text/css 90.9886ms
+2024-05-13 06:18:56.370 +03:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2024-05-13 06:18:56.379 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7210/swagger/swagger-ui-standalone-preset.js - 200 337162 text/javascript 109.3581ms
+2024-05-13 06:18:56.406 +03:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2024-05-13 06:18:56.410 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7210/swagger/swagger-ui-bundle.js - 200 1092889 text/javascript 140.5942ms
+2024-05-13 06:18:56.416 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7210/_vs/browserLink - 200 null text/javascript; charset=UTF-8 116.9048ms
+2024-05-13 06:18:57.804 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7210/swagger/v1/swagger.json - null null
+2024-05-13 06:18:57.815 +03:00 [DBG] No candidates found for the request path '/swagger/v1/swagger.json'
+2024-05-13 06:18:57.821 +03:00 [DBG] Request did not match any endpoints
+2024-05-13 06:18:57.962 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7210/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 158.3698ms
+2024-05-13 06:19:02.386 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7210/test - null null
+2024-05-13 06:19:02.394 +03:00 [DBG] 1 candidate(s) found for the request path '/test'
+2024-05-13 06:19:02.398 +03:00 [DBG] Endpoint 'IGT.Api.Controllers.HomeController.test (IGT.Api)' with route pattern 'test' is valid for the request path '/test'
+2024-05-13 06:19:02.400 +03:00 [DBG] Request matched endpoint 'IGT.Api.Controllers.HomeController.test (IGT.Api)'
+2024-05-13 06:19:02.402 +03:00 [DBG] Static files was skipped as the request already matched an endpoint.
+2024-05-13 06:19:02.443 +03:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2024-05-13 06:19:02.449 +03:00 [DBG] Policy authentication schemes  did not succeed
+2024-05-13 06:19:02.453 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-05-13 06:19:02.457 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-05-13 06:19:02.461 +03:00 [INF] HTTP GET /test responded 401 in 54.9044 ms
+2024-05-13 06:19:02.463 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7210/test - 401 0 null 76.8424ms
+2024-05-13 06:19:05.062 +03:00 [DBG] Authentication of the HTTPS connection timed out.
+2024-05-13 06:19:05.062 +03:00 [DBG] Authentication of the HTTPS connection timed out.
+2024-05-13 06:19:05.062 +03:00 [DBG] Connection id "0HN3IVDLSGRL7" stopped.
+2024-05-13 06:19:05.063 +03:00 [DBG] Connection id "0HN3IVDLSGRL6" stopped.
+2024-05-13 06:19:05.064 +03:00 [DBG] Connection id "0HN3IVDLSGRL7" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-05-13 06:19:05.065 +03:00 [DBG] Connection id "0HN3IVDLSGRL6" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-05-13 06:19:11.267 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7210/api/Authentication/testEmail - null null
+2024-05-13 06:19:11.271 +03:00 [DBG] 1 candidate(s) found for the request path '/api/Authentication/testEmail'
+2024-05-13 06:19:11.273 +03:00 [DBG] Endpoint 'IGT.Api.Controllers.AuthenticationController.testEmail (IGT.Api)' with route pattern 'api/Authentication/testEmail' is valid for the request path '/api/Authentication/testEmail'
+2024-05-13 06:19:11.276 +03:00 [DBG] Request matched endpoint 'IGT.Api.Controllers.AuthenticationController.testEmail (IGT.Api)'
+2024-05-13 06:19:11.278 +03:00 [DBG] Static files was skipped as the request already matched an endpoint.
+2024-05-13 06:19:11.282 +03:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2024-05-13 06:19:11.285 +03:00 [INF] Executing endpoint 'IGT.Api.Controllers.AuthenticationController.testEmail (IGT.Api)'
+2024-05-13 06:19:11.305 +03:00 [INF] Route matched with {action = "testEmail", controller = "Authentication"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] testEmail() on controller IGT.Api.Controllers.AuthenticationController (IGT.Api).
+2024-05-13 06:19:11.309 +03:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2024-05-13 06:19:11.310 +03:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2024-05-13 06:19:11.312 +03:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2024-05-13 06:19:11.313 +03:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2024-05-13 06:19:11.315 +03:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2024-05-13 06:19:11.318 +03:00 [DBG] Executing controller factory for controller IGT.Api.Controllers.AuthenticationController (IGT.Api)
+2024-05-13 06:19:11.331 +03:00 [DBG] Executed controller factory for controller IGT.Api.Controllers.AuthenticationController (IGT.Api)
+2024-05-13 06:19:13.347 +03:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2024-05-13 06:19:13.353 +03:00 [DBG] No information found on request to perform content negotiation.
+2024-05-13 06:19:13.354 +03:00 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2024-05-13 06:19:13.355 +03:00 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2024-05-13 06:19:13.357 +03:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter' and content type 'text/plain' to write the response.
+2024-05-13 06:19:13.358 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2024-05-13 06:19:13.363 +03:00 [INF] Executed action IGT.Api.Controllers.AuthenticationController.testEmail (IGT.Api) in 2044.5916ms
+2024-05-13 06:19:13.364 +03:00 [INF] Executed endpoint 'IGT.Api.Controllers.AuthenticationController.testEmail (IGT.Api)'
+2024-05-13 06:19:13.365 +03:00 [INF] HTTP GET /api/Authentication/testEmail responded 200 in 2086.4686 ms
+2024-05-13 06:19:13.369 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7210/api/Authentication/testEmail - 200 null text/plain; charset=utf-8 2102.7176ms
