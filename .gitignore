@@ -1,1 +1,11 @@
 .vs/
+IGR.Repository/bin/
+IGR.Repository/obj/
+IGR.Api/bin/
+IGR.Api/obj/
+IGR.Core/bin/
+IGR.Core/obj/
+IGR.Data/bin/
+IGR.Data/obj/
+IGR.Service/bin/
+IGR.Service/obj/
