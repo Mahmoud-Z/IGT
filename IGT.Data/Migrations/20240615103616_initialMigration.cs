@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace IGT.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class initialMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -20,6 +20,7 @@ namespace IGT.Data.Migrations
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FirstLogin = table.Column<bool>(type: "bit", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -225,8 +226,8 @@ namespace IGT.Data.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Discriminator", "Name", "NormalizedName", "SystemStatusCodeId" },
                 values: new object[,]
                 {
-                    { "0f01f60b-660b-405c-b49d-fcadbbbecb81", "2", "Role", "User", "User", null },
-                    { "ccb03393-5a9c-47fe-8cb8-f00c3b37a62b", "1", "Role", "Admin", "Admin", null }
+                    { "3421e7a4-97ac-4c10-99b3-cd11163260b6", "2", "Role", "User", "User", null },
+                    { "a447c114-1d79-4383-9550-f6b932395404", "1", "Role", "Admin", "Admin", null }
                 });
 
             migrationBuilder.InsertData(
@@ -240,6 +241,11 @@ namespace IGT.Data.Migrations
                     { 4L, "", "bussinesAnalitics", false, false, false, "Bussines analytics" },
                     { 5L, "", "editDeleteUser", false, false, false, "EditDelete user" }
                 });
+
+            migrationBuilder.InsertData(
+                table: "SystemStatusCode",
+                columns: new[] { "SystemStatusCodeId", "Model", "Name", "Status" },
+                values: new object[] { 1L, "GENERAL", "DELETED", "DELETED" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

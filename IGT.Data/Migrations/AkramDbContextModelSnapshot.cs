@@ -136,6 +136,15 @@ namespace IGT.Data.Migrations
                         .HasName("PK__SystemStatusCode__B3E77E5CCF515C05");
 
                     b.ToTable("SystemStatusCode", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            SystemStatusCodeId = 1L,
+                            Model = "GENERAL",
+                            Name = "DELETED",
+                            Status = "DELETED"
+                        });
                 });
 
             modelBuilder.Entity("IGT.Data.Models.User", b =>
@@ -155,6 +164,9 @@ namespace IGT.Data.Migrations
                         .HasColumnType("nvarchar(256)");
 
                     b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("FirstLogin")
                         .HasColumnType("bit");
 
                     b.Property<string>("FirstName")
@@ -380,14 +392,14 @@ namespace IGT.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "ccb03393-5a9c-47fe-8cb8-f00c3b37a62b",
+                            Id = "a447c114-1d79-4383-9550-f6b932395404",
                             ConcurrencyStamp = "1",
                             Name = "Admin",
                             NormalizedName = "Admin"
                         },
                         new
                         {
-                            Id = "0f01f60b-660b-405c-b49d-fcadbbbecb81",
+                            Id = "3421e7a4-97ac-4c10-99b3-cd11163260b6",
                             ConcurrencyStamp = "2",
                             Name = "User",
                             NormalizedName = "User"
