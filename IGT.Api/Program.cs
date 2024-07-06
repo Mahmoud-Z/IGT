@@ -105,11 +105,11 @@ using (var scope = app.Services.CreateScope())
     context.Database.Migrate();
 };
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment() || app.Configuration.GetValue<bool>("EnableSwaggerInProduction"))
-{
+//if (app.Environment.IsDevelopment() || app.Configuration.GetValue<bool>("EnableSwaggerInProduction"))
+//{
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+//}
 app.UseSerilogRequestLogging();
 
 //app.UseHttpsRedirection();
