@@ -9,7 +9,6 @@
   <ItemGroup>
     <Folder Include="DataSeed\" />
     <Folder Include="Extensions\" />
-    <Folder Include="Services\RoleManagment\" />
   </ItemGroup>
 
   <ItemGroup>

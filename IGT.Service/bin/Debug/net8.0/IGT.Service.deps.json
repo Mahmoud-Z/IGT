@@ -924,6 +924,7 @@
       },
       "IGT.Repository/1.0.0": {
         "dependencies": {
+          "IGT.Core": "1.0.0",
           "IGT.Data": "1.0.0"
         },
         "runtime": {

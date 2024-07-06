@@ -3,12 +3,13 @@ using IGT.Core.Dtos.UserManagment;
 using IGT.Core.Enums;
 using IGT.Core.Resources;
 using IGT.Data.Models;
+using IGT.Repository.UnitOfWork;
 using IGT.Service.Helpers;
 using IGT.Service.Helpers.EmailConfiguration;
 using IGT.Service.Helpers.Exceptions;
 using IGT.Service.Helpers.Valiodators;
-using IGT.Service.Interfaces.EmailService;
-using IGT.Service.Interfaces.UserManagement;
+using IGT.Service.Interfaces;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Extensions.Configuration;
@@ -29,17 +30,18 @@ namespace IGT.Service.Services.UserManagement
         private readonly JwtModel _jwt;
         private readonly IConfiguration _configuration;
         private readonly IEmailService _emailService;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public AuthenticationServices(UserManager<User> userManager, RoleManager<Role> roleManager, IOptions<JwtModel> jwt, IConfiguration configuration, IEmailService emailService)
+        public AuthenticationServices(UserManager<User> userManager, RoleManager<Role> roleManager, IOptions<JwtModel> jwt, 
+            IConfiguration configuration, IEmailService emailService, IUnitOfWork unitOfWork )
         {
             _userManager = userManager;
             _roleManager = roleManager;
             _jwt = jwt.Value;
             _configuration = configuration;
             _emailService = emailService;
+            _unitOfWork = unitOfWork;
         }
-
-
         public async Task<BaseDTO<AuthenticationModel>> login(TokenRequestModel model)
         {
             try
@@ -63,6 +65,11 @@ namespace IGT.Service.Services.UserManagement
                     {
                         throw new BussinessException(AuthenticationResource.EmailOrPasswordIsIncorrect);
                     }
+                    await DestroySessions(user.Id);
+                    if (user.isTempUser && user.expiresAt <= DateTime.Now)
+                    {
+                        throw new BussinessException(AuthenticationResource.ExpiredUser);
+                    }
                     var jwtSecurityToken = await CreateJwtToken(user);
                     var rolesList = await _userManager.GetRolesAsync(user);
                     authModel.IsAuthenticated = true;
@@ -72,6 +79,7 @@ namespace IGT.Service.Services.UserManagement
                     authModel.FirstLogin = user.FirstLogin;
                     authModel.ExpiresOn = jwtSecurityToken.ValidTo;
                     authModel.Roles = rolesList.ToList();
+                    await AddSession(authModel.Token,user);
                 }
                 return new BaseDTO<AuthenticationModel>
                 {
@@ -84,14 +92,67 @@ namespace IGT.Service.Services.UserManagement
             {
                 throw;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
                 throw new BussinessException(AuthenticationResource.GeneralError);
             }
             
         }
+        public async Task<BaseDTO<string>> register(RegisterModel model)
+        {
+            try
+            {
+                // Make role be customer
+                if (await _userManager.FindByEmailAsync(model.Email) is not null)
+                    throw new BussinessException(AuthenticationResource.EmailIsAlreadyRegistered);
 
+                if (await _userManager.FindByNameAsync(model.Username) is not null)
+                    throw new BussinessException(AuthenticationResource.UsernameIsAlreadyRegistered);
+                var user = new User
+                {
+                    UserName = model.Username,
+                    Email = model.Email,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    FirstLogin = false
+                };
+                if (await _roleManager.RoleExistsAsync(model.Role))
+                {
+
+                    var result = await _userManager.CreateAsync(user, model.Password);
+
+                    if (!result.Succeeded)
+                    {
+                        var errors = string.Empty;
+
+                        foreach (var error in result.Errors)
+                            errors += $"{error.Description},";
+
+                        throw new BussinessException(errors);
+                    }
+                    await _userManager.AddToRoleAsync(user, model.Role);
+                }
+                else
+                {
+                    throw new BussinessException(AuthenticationResource.ThisRoleDoesntExist);
+                }
+                return new BaseDTO<string>
+                {
+                    IsSuccess = true,
+                    Data = $"User with name {user.FirstName + " " + user.LastName} has been created successfully",
+                    Status = ResponseStatusEnum.Success.ToString(),
+                };
+            }
+            catch (BussinessException)
+            {
+                throw;
+            }
+            catch (Exception)
+            {
+                throw new BussinessException(AuthenticationResource.GeneralError);
+            }
+        }
         public async Task<string> AddRoleAsync(AddRoleModel model)
         {
             var user = await _userManager.FindByIdAsync(model.UserId);
@@ -106,7 +167,6 @@ namespace IGT.Service.Services.UserManagement
 
             return result.Succeeded ? string.Empty : "Sonething went wrong";
         }
-
         private async Task<JwtSecurityToken> CreateJwtToken(User user)
         {
             var userClaims = await _userManager.GetClaimsAsync(user);
@@ -118,9 +178,9 @@ namespace IGT.Service.Services.UserManagement
 
             var claims = new[]
             {
-                new Claim(JwtRegisteredClaimNames.Sub, user.UserName),
-                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                new Claim(JwtRegisteredClaimNames.Email, user.Email),
+                new Claim("username", user.UserName),
+                new Claim("jti", Guid.NewGuid().ToString()),
+                new Claim("mail", user.Email),
                 new Claim("uid", user.Id)
             }
             .Union(userClaims)
@@ -168,7 +228,7 @@ namespace IGT.Service.Services.UserManagement
             try
             {
                 var user = await _userManager.FindByEmailAsync(email);
-                if (user != null)
+                if (user == null)
                 {
                     throw new BussinessException(AuthenticationResource.UserNotFound);
                 }
@@ -199,7 +259,7 @@ namespace IGT.Service.Services.UserManagement
             try
             {
                 var user = await _userManager.FindByEmailAsync(email);
-                if (user != null)
+                if (user == null)
                 {
                     throw new BussinessException(AuthenticationResource.UserNotFound);
                 }
@@ -229,6 +289,67 @@ namespace IGT.Service.Services.UserManagement
                 throw new BussinessException(AuthenticationResource.GeneralError);
             }
 
+        }
+        public async Task<BaseDTO<string>> ChangePassword(ChangePasswordInputDTO input, string email)
+        {
+            try
+            {
+                var user = await _userManager.FindByEmailAsync(email);
+                if (user == null)
+                {
+                    throw new BussinessException(AuthenticationResource.UserNotFound);
+                }
+                if (!input.NewPassword.Equals(input.ConfirmPassword))
+                {
+                    throw new BussinessException(AuthenticationResource.NewAndConfirmPasswordDoesntMatch);
+                }
+                var resetPassResult = await _userManager.ChangePasswordAsync(user, input.CurrentPassword, input.NewPassword);
+                if (!resetPassResult.Succeeded)
+                {
+                    throw new BussinessException(AuthenticationResource.GeneralError);
+                }
+                if (user.FirstLogin)
+                {
+                    user.FirstLogin = false;
+                    await _userManager.UpdateAsync(user);
+                }
+                return new BaseDTO<string>
+                {
+                    IsSuccess = true,
+                    Status = ResponseStatusEnum.Success.ToString(),
+                    Data = GeneralResource.Success
+                };
+            }
+            catch (BussinessException)
+            {
+                throw;
+            }
+            catch (Exception)
+            {
+
+                throw new BussinessException(AuthenticationResource.GeneralError);
+            }
+
+        }
+        private async Task DestroySessions(string userId)
+        {
+            List<Session> sessions = (await _unitOfWork.GetRepository<Session>().FindAllAsync(s => s.User.Id == userId)).ToList();
+            SystemStatusCode? systemStatusCode = _unitOfWork.SystemStatusCode.getExpiredGeneralStatus();
+            sessions.ForEach(session => session.SystemStatusCode = systemStatusCode);
+            _unitOfWork.GetRepository<Session>().UpdateRangeAsync(sessions);
+            _unitOfWork.Complete();
+        }
+        private async Task AddSession(string token,User user)
+        {
+            SystemStatusCode? systemStatusCode = _unitOfWork.SystemStatusCode.getActiveGeneralStatus();
+            Session session = new Session()
+            {
+                Token = token,
+                User = user,
+                SystemStatusCode = systemStatusCode
+            };
+            await _unitOfWork.GetRepository<Session>().AddAsync(session);
+            await _unitOfWork.CompleteAsync();
         }
     }
 }

@@ -6,7 +6,7 @@ using IGT.Data.Models;
 using IGT.Repository.UnitOfWork;
 using IGT.Service.Helpers;
 using IGT.Service.Helpers.Exceptions;
-using IGT.Service.Interfaces.RoleManagment;
+using IGT.Service.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
@@ -16,7 +16,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IGT.Service.Services.RoleManagment
+namespace IGT.Service.Services
 {
     public class RoleManagmentService : IRoleManagmentService
     {
@@ -130,8 +130,7 @@ namespace IGT.Service.Services.RoleManagment
                 Role role = await _roleManager.FindByNameAsync(rolename);
                 if (rolename != null && role != null)
                 {
-                    role.SystemStatusCode = _unitOfWork.SystemStatusCode.GetAllSystemStatusCodes()
-.FirstOrDefault(s => s.Status.Equals(SystemStatusCodeEnum.DELETED.ToString()) && s.Model.Equals(SystemStatusCodeEnum.GENERAL.ToString()));
+                    role.SystemStatusCode = _unitOfWork.SystemStatusCode.getDeletedGeneralStatus();
                     var result = await _roleManager.UpdateAsync(role);
 
                     if (!result.Succeeded)

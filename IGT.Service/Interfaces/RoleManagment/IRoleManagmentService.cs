@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IGT.Service.Interfaces.RoleManagment
+namespace IGT.Service.Interfaces
 {
     public interface IRoleManagmentService
     {

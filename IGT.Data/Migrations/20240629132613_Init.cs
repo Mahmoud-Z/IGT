@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace IGT.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class initialMigration : Migration
+    public partial class Init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -21,6 +21,8 @@ namespace IGT.Data.Migrations
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     FirstLogin = table.Column<bool>(type: "bit", nullable: false),
+                    isTempUser = table.Column<bool>(type: "bit", nullable: false),
+                    expiresAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -155,6 +157,31 @@ namespace IGT.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Session",
+                columns: table => new
+                {
+                    SessionId = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Token = table.Column<string>(type: "varchar(max)", unicode: false, nullable: true),
+                    SystemStatusCodeId = table.Column<long>(type: "bigint", nullable: true),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK__Session__B3E77E5CCF515C05", x => x.SessionId);
+                    table.ForeignKey(
+                        name: "FK_SESSION_REFERENCE_SYSTEM_STATUS_CODE",
+                        column: x => x.SystemStatusCodeId,
+                        principalTable: "SystemStatusCode",
+                        principalColumn: "SystemStatusCodeId");
+                    table.ForeignKey(
+                        name: "FK_SESSION_REFERENCE_USER",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -226,8 +253,8 @@ namespace IGT.Data.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Discriminator", "Name", "NormalizedName", "SystemStatusCodeId" },
                 values: new object[,]
                 {
-                    { "3421e7a4-97ac-4c10-99b3-cd11163260b6", "2", "Role", "User", "User", null },
-                    { "a447c114-1d79-4383-9550-f6b932395404", "1", "Role", "Admin", "Admin", null }
+                    { "643bc1c8-c407-492f-af46-216427dfab49", "2", "Role", "User", "User", null },
+                    { "fd7928be-dbfb-4727-a8ea-dbd75b994932", "1", "Role", "Admin", "Admin", null }
                 });
 
             migrationBuilder.InsertData(
@@ -245,7 +272,12 @@ namespace IGT.Data.Migrations
             migrationBuilder.InsertData(
                 table: "SystemStatusCode",
                 columns: new[] { "SystemStatusCodeId", "Model", "Name", "Status" },
-                values: new object[] { 1L, "GENERAL", "DELETED", "DELETED" });
+                values: new object[,]
+                {
+                    { 1L, "GENERAL", "DELETED", "DELETED" },
+                    { 2L, "GENERAL", "EXPIRED", "EXPIRED" },
+                    { 3L, "GENERAL", "ACTIVE", "ACTIVE" }
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -295,6 +327,16 @@ namespace IGT.Data.Migrations
                 name: "IX_RolePrivilege_Id",
                 table: "RolePrivilege",
                 column: "Id");
+
+            migrationBuilder.CreateIndex(
+                name: "IndexSessionSystemStatusCodeId",
+                table: "Session",
+                column: "SystemStatusCodeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IndexSessionUserId",
+                table: "Session",
+                column: "UserId");
         }
 
         /// <inheritdoc />
@@ -319,13 +361,16 @@ namespace IGT.Data.Migrations
                 name: "RolePrivilege");
 
             migrationBuilder.DropTable(
-                name: "AspNetUsers");
+                name: "Session");
 
             migrationBuilder.DropTable(
                 name: "Privilege");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
+
+            migrationBuilder.DropTable(
+                name: "AspNetUsers");
 
             migrationBuilder.DropTable(
                 name: "SystemStatusCode");

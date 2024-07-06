@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IGT.Service.Interfaces.EmailService
+namespace IGT.Service.Interfaces
 {
     public interface IEmailService
     {

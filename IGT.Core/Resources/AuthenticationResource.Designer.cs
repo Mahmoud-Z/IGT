@@ -79,6 +79,24 @@ namespace IGT.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Expire date should be in the future.
+        /// </summary>
+        public static string ExpireDateWrong {
+            get {
+                return ResourceManager.GetString("ExpireDateWrong", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This user has been expired.
+        /// </summary>
+        public static string ExpiredUser {
+            get {
+                return ResourceManager.GetString("ExpiredUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to General error.
         /// </summary>
         public static string GeneralError {

@@ -21,6 +21,7 @@ public class AkramDbContext : IdentityDbContext<User>
     public virtual DbSet<User> Users { get; set; }
     public virtual DbSet<Role> Roles { get; set; }
     public virtual DbSet<Privilege> Privileges { get; set; }
+    public virtual DbSet<Session> Sessions { get; set; }
     public virtual DbSet<SystemStatusCode> SystemStatusCodes { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -97,6 +98,28 @@ public class AkramDbContext : IdentityDbContext<User>
                         j.ToTable("RolePrivilege");
                     });
         });
+        modelBuilder.Entity<Session>(entity =>
+        {
+            entity.HasKey(e => e.SessionId).HasName("PK__Session__B3E77E5CCF515C05");
+
+            entity.ToTable("Session");
+
+            entity.Property(e => e.SessionId).ValueGeneratedOnAdd();
+            entity.Property(e => e.Token)
+                .IsUnicode(false);
+            entity.HasIndex(e => e.SystemStatusCodeId, "IndexSessionSystemStatusCodeId");
+            entity.HasOne(d => d.SystemStatusCode)
+                .WithMany(p => p.Sessions)
+                .HasForeignKey(d => d.SystemStatusCodeId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_SESSION_REFERENCE_SYSTEM_STATUS_CODE");
+            entity.HasIndex(e => e.UserId, "IndexSessionUserId");
+            entity.HasOne(d => d.User)
+                .WithMany(p => p.Sessions)
+                .HasForeignKey(d => d.UserId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_SESSION_REFERENCE_USER");
+        });
         SeedRoles(modelBuilder);
         base.OnModelCreating(modelBuilder);
     }
@@ -114,7 +137,9 @@ public class AkramDbContext : IdentityDbContext<User>
             new Privilege() { PrivilegeId = 5, Name = "EditDelete user", Code = "editDeleteUser", BackendURL = "", IsGeneral = false }
         );
         builder.Entity<SystemStatusCode>().HasData(
-            new SystemStatusCode() {SystemStatusCodeId = 1 ,Name = "DELETED", Status = "DELETED", Model="GENERAL"}
+            new SystemStatusCode() {SystemStatusCodeId = 1 ,Name = "DELETED", Status = "DELETED", Model="GENERAL" },
+            new SystemStatusCode() { SystemStatusCodeId = 2, Name = "EXPIRED", Status = "EXPIRED", Model = "GENERAL" },
+            new SystemStatusCode() { SystemStatusCodeId = 3, Name = "ACTIVE", Status = "ACTIVE", Model = "GENERAL" }
         );
     }
 }

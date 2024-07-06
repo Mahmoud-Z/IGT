@@ -164,6 +164,11 @@ namespace IGT.Repository.GenericRepository
             _context.Update(entity);
             return entity;
         }
+        public IEnumerable<T> UpdateRangeAsync(IEnumerable<T> entities)
+        {
+             _context.Set<T>().UpdateRange(entities);
+            return entities;
+        }
 
         public void Delete(T entity)
         {

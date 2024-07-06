@@ -8,6 +8,6 @@ namespace IGT.Core.Enums
 {
     public enum SystemStatusCodeEnum
     {
-        DELETED,GENERAL
+        ACTIVE,DELETED,GENERAL,EXPIRED
     }
 }

@@ -1,6 +1,6 @@
 ﻿using IGT.Core.Dtos.EmailManagment;
 using IGT.Service.Helpers.EmailConfiguration;
-using IGT.Service.Interfaces.EmailService;
+using IGT.Service.Interfaces;
 using MimeKit;
 using MailKit.Net.Smtp;
 using System;
@@ -10,7 +10,7 @@ using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IGT.Service.Services.EmailService
+namespace IGT.Service.Services
 {
     public class EmailService : IEmailService
     {

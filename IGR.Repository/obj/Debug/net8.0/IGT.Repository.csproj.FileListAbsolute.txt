@@ -8,8 +8,11 @@ F:\Work\IGT\IGR.Repository\obj\Debug\net8.0\IGT.Repository.GeneratedMSBuildEdito
 F:\Work\IGT\IGR.Repository\obj\Debug\net8.0\IGT.Repository.AssemblyInfoInputs.cache
 F:\Work\IGT\IGR.Repository\obj\Debug\net8.0\IGT.Repository.AssemblyInfo.cs
 F:\Work\IGT\IGR.Repository\obj\Debug\net8.0\IGT.Repository.csproj.CoreCompileInputs.cache
+F:\Work\IGT\IGR.Repository\obj\Debug\net8.0\IGT.Repository.sourcelink.json
 F:\Work\IGT\IGR.Repository\obj\Debug\net8.0\IGT.Repo.0C551286.Up2Date
 F:\Work\IGT\IGR.Repository\obj\Debug\net8.0\IGT.Repository.dll
 F:\Work\IGT\IGR.Repository\obj\Debug\net8.0\refint\IGT.Repository.dll
 F:\Work\IGT\IGR.Repository\obj\Debug\net8.0\IGT.Repository.pdb
 F:\Work\IGT\IGR.Repository\obj\Debug\net8.0\ref\IGT.Repository.dll
+F:\Work\IGT\IGR.Repository\bin\Debug\net8.0\IGT.Core.dll
+F:\Work\IGT\IGR.Repository\bin\Debug\net8.0\IGT.Core.pdb

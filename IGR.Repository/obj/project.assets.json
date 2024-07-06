@@ -1068,6 +1068,19 @@
           }
         }
       },
+      "IGT.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "IGT.Data": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/IGT.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/IGT.Core.dll": {}
+        }
+      },
       "IGT.Data/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
@@ -2908,6 +2921,11 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "IGT.Core/1.0.0": {
+      "type": "project",
+      "path": "../IGT.Core/IGT.Core.csproj",
+      "msbuildProject": "../IGT.Core/IGT.Core.csproj"
+    },
     "IGT.Data/1.0.0": {
       "type": "project",
       "path": "../IGT.Data/IGT.Data.csproj",
@@ -2916,6 +2934,7 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
+      "IGT.Core >= 1.0.0",
       "IGT.Data >= 1.0.0"
     ]
   },
@@ -2946,6 +2965,9 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
+            "F:\\Work\\IGT\\IGT.Core\\IGT.Core.csproj": {
+              "projectPath": "F:\\Work\\IGT\\IGT.Core\\IGT.Core.csproj"
+            },
             "F:\\Work\\IGT\\IGT.Data\\IGT.Data.csproj": {
               "projectPath": "F:\\Work\\IGT\\IGT.Data\\IGT.Data.csproj"
             }

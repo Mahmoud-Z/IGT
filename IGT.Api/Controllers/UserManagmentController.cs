@@ -3,7 +3,8 @@ using IGT.Service.Helpers.Exceptions;
 using IGT.Service.Helpers.Valiodators;
 using IGT.Service.Helpers;
 using Microsoft.AspNetCore.Mvc;
-using IGT.Service.Interfaces.UserManagement;
+using IGT.Service.Interfaces;
+using IGT.Core.Dtos.UserManagment;
 
 namespace IGT.Api.Controllers
 {
@@ -17,7 +18,7 @@ namespace IGT.Api.Controllers
         }
 
         [HttpPost("addUser")]
-        public async Task<IActionResult> addUser([FromBody] RegisterModel model)
+        public async Task<IActionResult> addUser([FromBody] CreateUserInputDTO model)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);

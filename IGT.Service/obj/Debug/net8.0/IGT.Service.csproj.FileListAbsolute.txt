@@ -12,6 +12,7 @@ F:\Work\IGT\IGT.Service\obj\Debug\net8.0\IGT.Service.GeneratedMSBuildEditorConfi
 F:\Work\IGT\IGT.Service\obj\Debug\net8.0\IGT.Service.AssemblyInfoInputs.cache
 F:\Work\IGT\IGT.Service\obj\Debug\net8.0\IGT.Service.AssemblyInfo.cs
 F:\Work\IGT\IGT.Service\obj\Debug\net8.0\IGT.Service.csproj.CoreCompileInputs.cache
+F:\Work\IGT\IGT.Service\obj\Debug\net8.0\IGT.Service.sourcelink.json
 F:\Work\IGT\IGT.Service\obj\Debug\net8.0\IGT.Serv.174F7767.Up2Date
 F:\Work\IGT\IGT.Service\obj\Debug\net8.0\IGT.Service.dll
 F:\Work\IGT\IGT.Service\obj\Debug\net8.0\refint\IGT.Service.dll

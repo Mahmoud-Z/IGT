@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IGT.Data.Migrations
 {
     [DbContext(typeof(AkramDbContext))]
-    [Migration("20240615103616_initialMigration")]
-    partial class initialMigration
+    [Migration("20240629132613_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -115,6 +115,34 @@ namespace IGT.Data.Migrations
                         });
                 });
 
+            modelBuilder.Entity("IGT.Data.Models.Session", b =>
+                {
+                    b.Property<long>("SessionId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("SessionId"));
+
+                    b.Property<long?>("SystemStatusCodeId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Token")
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(max)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("SessionId")
+                        .HasName("PK__Session__B3E77E5CCF515C05");
+
+                    b.HasIndex(new[] { "SystemStatusCodeId" }, "IndexSessionSystemStatusCodeId");
+
+                    b.HasIndex(new[] { "UserId" }, "IndexSessionUserId");
+
+                    b.ToTable("Session", (string)null);
+                });
+
             modelBuilder.Entity("IGT.Data.Models.SystemStatusCode", b =>
                 {
                     b.Property<long>("SystemStatusCodeId")
@@ -147,6 +175,20 @@ namespace IGT.Data.Migrations
                             Model = "GENERAL",
                             Name = "DELETED",
                             Status = "DELETED"
+                        },
+                        new
+                        {
+                            SystemStatusCodeId = 2L,
+                            Model = "GENERAL",
+                            Name = "EXPIRED",
+                            Status = "EXPIRED"
+                        },
+                        new
+                        {
+                            SystemStatusCodeId = 3L,
+                            Model = "GENERAL",
+                            Name = "ACTIVE",
+                            Status = "ACTIVE"
                         });
                 });
 
@@ -210,6 +252,12 @@ namespace IGT.Data.Migrations
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
+
+                    b.Property<DateTime?>("expiresAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("isTempUser")
+                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 
@@ -395,18 +443,35 @@ namespace IGT.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "a447c114-1d79-4383-9550-f6b932395404",
+                            Id = "fd7928be-dbfb-4727-a8ea-dbd75b994932",
                             ConcurrencyStamp = "1",
                             Name = "Admin",
                             NormalizedName = "Admin"
                         },
                         new
                         {
-                            Id = "3421e7a4-97ac-4c10-99b3-cd11163260b6",
+                            Id = "643bc1c8-c407-492f-af46-216427dfab49",
                             ConcurrencyStamp = "2",
                             Name = "User",
                             NormalizedName = "User"
                         });
+                });
+
+            modelBuilder.Entity("IGT.Data.Models.Session", b =>
+                {
+                    b.HasOne("IGT.Data.Models.SystemStatusCode", "SystemStatusCode")
+                        .WithMany("Sessions")
+                        .HasForeignKey("SystemStatusCodeId")
+                        .HasConstraintName("FK_SESSION_REFERENCE_SYSTEM_STATUS_CODE");
+
+                    b.HasOne("IGT.Data.Models.User", "User")
+                        .WithMany("Sessions")
+                        .HasForeignKey("UserId")
+                        .HasConstraintName("FK_SESSION_REFERENCE_USER");
+
+                    b.Navigation("SystemStatusCode");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -488,6 +553,13 @@ namespace IGT.Data.Migrations
             modelBuilder.Entity("IGT.Data.Models.SystemStatusCode", b =>
                 {
                     b.Navigation("Roles");
+
+                    b.Navigation("Sessions");
+                });
+
+            modelBuilder.Entity("IGT.Data.Models.User", b =>
+                {
+                    b.Navigation("Sessions");
                 });
 #pragma warning restore 612, 618
         }

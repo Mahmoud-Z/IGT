@@ -9,4 +9,7 @@ public class User : IdentityUser
     public string? FirstName { get; set; }
     public string? LastName { get; set; }
     public bool FirstLogin { get; set; } = true;
+    public bool isTempUser { get; set; } = false;
+    public DateTime? expiresAt { get; set; }
+    public virtual ICollection<Session>? Sessions { get; set; }
 }

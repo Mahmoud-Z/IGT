@@ -25,7 +25,7 @@
     "Parameters": [
       {
         "Name": "model",
-        "Type": "IGT.Service.Helpers.RegisterModel",
+        "Type": "IGT.Core.Dtos.UserManagment.CreateUserInputDTO",
         "IsRequired": true
       }
     ],
@@ -49,7 +49,23 @@
   },
   {
     "ContainingType": "IGT.Api.Controllers.AuthenticationController",
-    "Method": "forgetPassword",
+    "Method": "ChangePassword",
+    "RelativePath": "api/Authentication/changePassword",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "input",
+        "Type": "IGT.Core.Dtos.UserManagment.ChangePasswordInputDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "IGT.Api.Controllers.AuthenticationController",
+    "Method": "ForgetPassword",
     "RelativePath": "api/Authentication/forgetPassword",
     "HttpMethod": "POST",
     "IsController": true,
@@ -65,7 +81,7 @@
   },
   {
     "ContainingType": "IGT.Api.Controllers.AuthenticationController",
-    "Method": "login",
+    "Method": "Login",
     "RelativePath": "api/Authentication/login",
     "HttpMethod": "POST",
     "IsController": true,
@@ -74,6 +90,38 @@
       {
         "Name": "model",
         "Type": "IGT.Service.Helpers.TokenRequestModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "IGT.Api.Controllers.AuthenticationController",
+    "Method": "Register",
+    "RelativePath": "api/Authentication/register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "IGT.Service.Helpers.RegisterModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "IGT.Api.Controllers.AuthenticationController",
+    "Method": "ResetPassword",
+    "RelativePath": "api/Authentication/resetPassword",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "input",
+        "Type": "IGT.Core.Dtos.UserManagment.ResetPasswordInputDTO",
         "IsRequired": true
       }
     ],

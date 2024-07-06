@@ -1,6 +1,6 @@
 ﻿using IGT.Data.Models;
 using IGT.Repository.UnitOfWork;
-using IGT.Service.Interfaces.UserManagement;
+using IGT.Service.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;

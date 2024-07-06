@@ -4,8 +4,7 @@ using IGT.Service.Helpers.CustomAttributes;
 using IGT.Service.Helpers.EmailConfiguration;
 using IGT.Service.Helpers.Exceptions;
 using IGT.Service.Helpers.Valiodators;
-using IGT.Service.Interfaces.EmailService;
-using IGT.Service.Interfaces.UserManagement;
+using IGT.Service.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
@@ -32,11 +31,29 @@ namespace IGT.Api.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] TokenRequestModel model)
         {
+            //We need to cahnge the expiration time for the token
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
             try
             {
                 var result = await _authenticationServices.login(model);
+
+                return Ok(result);
+            }
+            catch (BussinessException ex)
+            {
+                return Ok(ex.ErrorObject);
+            }
+        }
+
+        [HttpPost("register")]
+        public async Task<IActionResult> Register([FromBody] RegisterModel model)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+            try
+            {
+                var result = await _authenticationServices.register(model);
 
                 return Ok(result);
             }
@@ -54,7 +71,7 @@ namespace IGT.Api.Controllers
                 return BadRequest(ModelState);
             try
             {
-                var userEmail = User.FindFirst("email")?.Value;
+                var userEmail = User.FindFirst("mail")?.Value;
                 var result = await _authenticationServices.forgetPassword(userEmail);
 
                 return Ok(result);
@@ -72,7 +89,7 @@ namespace IGT.Api.Controllers
                 return BadRequest(ModelState);
             try
             {
-                var userEmail = User.FindFirst("email")?.Value;
+                var userEmail = User.FindFirst("mail")?.Value;
                 var result = await _authenticationServices.ResetPassword(input,userEmail);
 
                 return Ok(result);
@@ -82,7 +99,26 @@ namespace IGT.Api.Controllers
                 return Ok(ex.ErrorObject);
             }
         }
+        [Authorize]
+        [HttpPost("changePassword")]
+        public async Task<IActionResult> ChangePassword([FromBody] ChangePasswordInputDTO input)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+            try
+            {
+                var userEmail = User.FindFirst("mail")?.Value;
+                var result = await _authenticationServices.ChangePassword(input, userEmail);
 
+                return Ok(result);
+            }
+            catch (BussinessException ex)
+            {
+                return Ok(ex.ErrorObject);
+            }
+        }
+
+        [CustomAuthorize]
         [HttpPost("addrole")]
         public async Task<IActionResult> AddRoleAsync([FromBody] AddRoleModel model)
         {
@@ -97,6 +133,7 @@ namespace IGT.Api.Controllers
             return Ok(model);
         }
 
+        [CustomAuthorize]
         [HttpGet("testEmail")]
         public async Task<IActionResult> testEmail()
         {

@@ -13,5 +13,6 @@ namespace IGT.Data.Models
         public string? Status { get; set; }
         public string? Model { get; set; }
         public virtual ICollection<Role> Roles { get; set; }
+        public virtual ICollection<Session> Sessions { get; set; }
     }
 }

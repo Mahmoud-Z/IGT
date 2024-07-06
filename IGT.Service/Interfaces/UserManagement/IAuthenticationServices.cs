@@ -7,13 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IGT.Service.Interfaces.UserManagement
+namespace IGT.Service.Interfaces
 {
     public interface IAuthenticationServices
     {
         Task<BaseDTO<AuthenticationModel>> login(TokenRequestModel model);
+        Task<BaseDTO<string>> register(RegisterModel model);
         Task<string> AddRoleAsync(AddRoleModel model);
         Task<BaseDTO<string>> forgetPassword(string email);
         Task<BaseDTO<string>> ResetPassword(ResetPasswordInputDTO input, string email);
+        Task<BaseDTO<string>> ChangePassword(ChangePasswordInputDTO input, string email);
     }
 }

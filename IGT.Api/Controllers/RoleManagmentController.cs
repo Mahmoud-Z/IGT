@@ -3,7 +3,7 @@ using IGT.Service.Helpers;
 using IGT.Service.Helpers.CustomAttributes;
 using IGT.Service.Helpers.Exceptions;
 using IGT.Service.Helpers.Valiodators;
-using IGT.Service.Interfaces.RoleManagment;
+using IGT.Service.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IGT.Api.Controllers

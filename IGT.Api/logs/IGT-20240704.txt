@@ -1,0 +1,136 @@
+2024-07-04 22:38:24.121 +03:00 [DBG] An 'IServiceProvider' was created for internal use by Entity Framework.
+2024-07-04 22:38:26.067 +03:00 [DBG] The index {'UserId'} was not created on entity type 'IdentityUserRole<string>' as the properties are already covered by the index {'UserId', 'RoleId'}.
+2024-07-04 22:38:26.072 +03:00 [DBG] The index {'UserId'} was not created on entity type 'IdentityUserToken<string>' as the properties are already covered by the index {'UserId', 'LoginProvider', 'Name'}.
+2024-07-04 22:38:26.074 +03:00 [DBG] The index {'RoleId'} was not created on entity type 'RolePrivilege (Dictionary<string, object>)' as the properties are already covered by the index {'RoleId', 'Id'}.
+2024-07-04 22:38:26.301 +03:00 [DBG] The property 'IdentityRole.Discriminator' was created in shadow state because there are no eligible CLR members with a matching name.
+2024-07-04 22:38:26.629 +03:00 [DBG] Entity Framework Core 8.0.2 initialized 'AkramDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:8.0.2' with options: None
+2024-07-04 22:38:26.639 +03:00 [DBG] Creating DbConnection.
+2024-07-04 22:38:26.903 +03:00 [DBG] Created DbConnection. (261ms).
+2024-07-04 22:38:26.907 +03:00 [DBG] Migrating using database 'IGTDBTest3' on server 'DESKTOP-NT39CCP\MSSQLSERVERZ'.
+2024-07-04 22:38:26.923 +03:00 [DBG] Opening connection to database 'IGTDBTest3' on server 'DESKTOP-NT39CCP\MSSQLSERVERZ'.
+2024-07-04 22:38:27.458 +03:00 [DBG] Opened connection to database 'IGTDBTest3' on server 'DESKTOP-NT39CCP\MSSQLSERVERZ'.
+2024-07-04 22:38:27.465 +03:00 [DBG] Creating DbCommand for 'ExecuteNonQuery'.
+2024-07-04 22:38:27.472 +03:00 [DBG] Created DbCommand for 'ExecuteNonQuery' (6ms).
+2024-07-04 22:38:27.475 +03:00 [DBG] Initialized DbCommand for 'ExecuteNonQuery' (12ms).
+2024-07-04 22:38:27.483 +03:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-07-04 22:38:27.511 +03:00 [INF] Executed DbCommand (26ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-07-04 22:38:27.514 +03:00 [DBG] Closing connection to database 'IGTDBTest3' on server 'DESKTOP-NT39CCP\MSSQLSERVERZ'.
+2024-07-04 22:38:27.523 +03:00 [DBG] Closed connection to database 'IGTDBTest3' on server 'DESKTOP-NT39CCP\MSSQLSERVERZ' (5ms).
+2024-07-04 22:38:27.529 +03:00 [DBG] Creating DbCommand for 'ExecuteScalar'.
+2024-07-04 22:38:27.530 +03:00 [DBG] Created DbCommand for 'ExecuteScalar' (1ms).
+2024-07-04 22:38:27.531 +03:00 [DBG] Initialized DbCommand for 'ExecuteScalar' (2ms).
+2024-07-04 22:38:27.532 +03:00 [DBG] Opening connection to database 'IGTDBTest3' on server 'DESKTOP-NT39CCP\MSSQLSERVERZ'.
+2024-07-04 22:38:27.534 +03:00 [DBG] Opened connection to database 'IGTDBTest3' on server 'DESKTOP-NT39CCP\MSSQLSERVERZ'.
+2024-07-04 22:38:27.536 +03:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-07-04 22:38:27.595 +03:00 [INF] Executed DbCommand (59ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-07-04 22:38:27.598 +03:00 [DBG] Closing connection to database 'IGTDBTest3' on server 'DESKTOP-NT39CCP\MSSQLSERVERZ'.
+2024-07-04 22:38:27.600 +03:00 [DBG] Closed connection to database 'IGTDBTest3' on server 'DESKTOP-NT39CCP\MSSQLSERVERZ' (1ms).
+2024-07-04 22:38:27.602 +03:00 [DBG] Opening connection to database 'IGTDBTest3' on server 'DESKTOP-NT39CCP\MSSQLSERVERZ'.
+2024-07-04 22:38:27.603 +03:00 [DBG] Opened connection to database 'IGTDBTest3' on server 'DESKTOP-NT39CCP\MSSQLSERVERZ'.
+2024-07-04 22:38:27.604 +03:00 [DBG] Creating DbCommand for 'ExecuteNonQuery'.
+2024-07-04 22:38:27.606 +03:00 [DBG] Created DbCommand for 'ExecuteNonQuery' (1ms).
+2024-07-04 22:38:27.606 +03:00 [DBG] Initialized DbCommand for 'ExecuteNonQuery' (2ms).
+2024-07-04 22:38:27.607 +03:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-07-04 22:38:27.610 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-07-04 22:38:27.612 +03:00 [DBG] Closing connection to database 'IGTDBTest3' on server 'DESKTOP-NT39CCP\MSSQLSERVERZ'.
+2024-07-04 22:38:27.613 +03:00 [DBG] Closed connection to database 'IGTDBTest3' on server 'DESKTOP-NT39CCP\MSSQLSERVERZ' (1ms).
+2024-07-04 22:38:27.615 +03:00 [DBG] Creating DbCommand for 'ExecuteScalar'.
+2024-07-04 22:38:27.615 +03:00 [DBG] Created DbCommand for 'ExecuteScalar' (0ms).
+2024-07-04 22:38:27.617 +03:00 [DBG] Initialized DbCommand for 'ExecuteScalar' (2ms).
+2024-07-04 22:38:27.618 +03:00 [DBG] Opening connection to database 'IGTDBTest3' on server 'DESKTOP-NT39CCP\MSSQLSERVERZ'.
+2024-07-04 22:38:27.619 +03:00 [DBG] Opened connection to database 'IGTDBTest3' on server 'DESKTOP-NT39CCP\MSSQLSERVERZ'.
+2024-07-04 22:38:27.620 +03:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-07-04 22:38:27.622 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-07-04 22:38:27.624 +03:00 [DBG] Closing connection to database 'IGTDBTest3' on server 'DESKTOP-NT39CCP\MSSQLSERVERZ'.
+2024-07-04 22:38:27.625 +03:00 [DBG] Closed connection to database 'IGTDBTest3' on server 'DESKTOP-NT39CCP\MSSQLSERVERZ' (1ms).
+2024-07-04 22:38:27.640 +03:00 [DBG] Opening connection to database 'IGTDBTest3' on server 'DESKTOP-NT39CCP\MSSQLSERVERZ'.
+2024-07-04 22:38:27.641 +03:00 [DBG] Opened connection to database 'IGTDBTest3' on server 'DESKTOP-NT39CCP\MSSQLSERVERZ'.
+2024-07-04 22:38:27.642 +03:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2024-07-04 22:38:27.643 +03:00 [DBG] Created DbCommand for 'ExecuteReader' (0ms).
+2024-07-04 22:38:27.644 +03:00 [DBG] Initialized DbCommand for 'ExecuteReader' (1ms).
+2024-07-04 22:38:27.646 +03:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-07-04 22:38:27.674 +03:00 [INF] Executed DbCommand (29ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-07-04 22:38:27.679 +03:00 [DBG] Closing data reader to 'IGTDBTest3' on server 'DESKTOP-NT39CCP\MSSQLSERVERZ'.
+2024-07-04 22:38:27.681 +03:00 [DBG] A data reader for 'IGTDBTest3' on server 'DESKTOP-NT39CCP\MSSQLSERVERZ' is being disposed after spending 3ms reading results.
+2024-07-04 22:38:27.683 +03:00 [DBG] Closing connection to database 'IGTDBTest3' on server 'DESKTOP-NT39CCP\MSSQLSERVERZ'.
+2024-07-04 22:38:27.684 +03:00 [DBG] Closed connection to database 'IGTDBTest3' on server 'DESKTOP-NT39CCP\MSSQLSERVERZ' (1ms).
+2024-07-04 22:38:27.694 +03:00 [INF] No migrations were applied. The database is already up to date.
+2024-07-04 22:38:27.696 +03:00 [DBG] 'AkramDbContext' disposed.
+2024-07-04 22:38:27.699 +03:00 [DBG] Disposing connection to database 'IGTDBTest3' on server 'DESKTOP-NT39CCP\MSSQLSERVERZ'.
+2024-07-04 22:38:27.701 +03:00 [DBG] Disposed connection to database '' on server '' (1ms).
+2024-07-04 22:38:27.819 +03:00 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.TryParseModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+2024-07-04 22:38:27.978 +03:00 [DBG] Hosting starting
+2024-07-04 22:38:28.013 +03:00 [INF] User profile is available. Using 'C:\Users\Mahmoud\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-07-04 22:38:28.023 +03:00 [DBG] Reading data from file 'C:\Users\Mahmoud\AppData\Local\ASP.NET\DataProtection-Keys\key-581d007c-de32-4ef7-bbf6-929ec5119e74.xml'.
+2024-07-04 22:38:28.106 +03:00 [DBG] Reading data from file 'C:\Users\Mahmoud\AppData\Local\ASP.NET\DataProtection-Keys\key-59c2a83d-4957-4799-80ce-9765b1403343.xml'.
+2024-07-04 22:38:28.119 +03:00 [DBG] Reading data from file 'C:\Users\Mahmoud\AppData\Local\ASP.NET\DataProtection-Keys\key-cd3da43b-3018-4678-9b4c-bdd15acccbb6.xml'.
+2024-07-04 22:38:28.144 +03:00 [DBG] Found key {581d007c-de32-4ef7-bbf6-929ec5119e74}.
+2024-07-04 22:38:28.153 +03:00 [DBG] Found key {59c2a83d-4957-4799-80ce-9765b1403343}.
+2024-07-04 22:38:28.154 +03:00 [DBG] Found key {cd3da43b-3018-4678-9b4c-bdd15acccbb6}.
+2024-07-04 22:38:28.161 +03:00 [DBG] Considering key {59c2a83d-4957-4799-80ce-9765b1403343} with expiration date 2024-08-01 11:47:15Z as default key.
+2024-07-04 22:38:28.164 +03:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2024-07-04 22:38:28.166 +03:00 [DBG] Decrypting secret element using Windows DPAPI.
+2024-07-04 22:38:28.168 +03:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2024-07-04 22:38:28.171 +03:00 [DBG] Opening CNG algorithm 'AES' from provider 'null' with chaining mode CBC.
+2024-07-04 22:38:28.173 +03:00 [DBG] Opening CNG algorithm 'SHA256' from provider 'null' with HMAC.
+2024-07-04 22:38:28.175 +03:00 [DBG] Using key {59c2a83d-4957-4799-80ce-9765b1403343} as the default key.
+2024-07-04 22:38:28.176 +03:00 [DBG] Key ring with default key {59c2a83d-4957-4799-80ce-9765b1403343} was loaded during application startup.
+2024-07-04 22:38:28.473 +03:00 [WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+2024-07-04 22:38:28.598 +03:00 [INF] Now listening on: https://localhost:5001
+2024-07-04 22:38:28.599 +03:00 [INF] Now listening on: http://localhost:5002
+2024-07-04 22:38:28.600 +03:00 [DBG] Loaded hosting startup assembly IGT.Api
+2024-07-04 22:38:28.601 +03:00 [DBG] Loaded hosting startup assembly Microsoft.WebTools.ApiEndpointDiscovery
+2024-07-04 22:38:28.602 +03:00 [DBG] Loaded hosting startup assembly Microsoft.AspNetCore.Watch.BrowserRefresh
+2024-07-04 22:38:28.603 +03:00 [DBG] Loaded hosting startup assembly Microsoft.WebTools.BrowserLink.Net
+2024-07-04 22:38:28.661 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-07-04 22:38:28.662 +03:00 [INF] Hosting environment: Development
+2024-07-04 22:38:28.663 +03:00 [INF] Content root path: F:\Work\IGT\IGT.Api
+2024-07-04 22:38:28.665 +03:00 [DBG] Hosting started
+2024-07-04 22:38:28.731 +03:00 [DBG] Connection id "0HN4SC3GHP55V" accepted.
+2024-07-04 22:38:28.733 +03:00 [DBG] Connection id "0HN4SC3GHP55V" started.
+2024-07-04 22:38:29.014 +03:00 [DBG] Connection id "0HN4SC3GHP560" accepted.
+2024-07-04 22:38:29.017 +03:00 [DBG] Connection id "0HN4SC3GHP560" started.
+2024-07-04 22:38:29.682 +03:00 [DBG] Connection id "0HN4SC3GHP561" accepted.
+2024-07-04 22:38:29.698 +03:00 [DBG] Connection id "0HN4SC3GHP562" accepted.
+2024-07-04 22:38:29.699 +03:00 [DBG] Connection id "0HN4SC3GHP561" started.
+2024-07-04 22:38:29.706 +03:00 [DBG] Connection id "0HN4SC3GHP562" started.
+2024-07-04 22:38:29.774 +03:00 [DBG] Connection id "0HN4SC3GHP562" received FIN.
+2024-07-04 22:38:29.812 +03:00 [DBG] Connection id "0HN4SC3GHP561" received FIN.
+2024-07-04 22:38:29.837 +03:00 [DBG] Failed to authenticate HTTPS connection.
+System.Security.Authentication.AuthenticationException: Authentication failed, see inner exception.
+ ---> System.ComponentModel.Win32Exception (0x80090327): An unknown error occurred while processing the certificate.
+   --- End of inner exception stack trace ---
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](Boolean receiveFirst, Byte[] reAuthenticationData, CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ProcessAuthenticationWithTelemetryAsync(Boolean isAsync, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+2024-07-04 22:38:29.840 +03:00 [DBG] Failed to authenticate HTTPS connection.
+System.Security.Authentication.AuthenticationException: Authentication failed, see inner exception.
+ ---> System.ComponentModel.Win32Exception (0x80090327): An unknown error occurred while processing the certificate.
+   --- End of inner exception stack trace ---
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](Boolean receiveFirst, Byte[] reAuthenticationData, CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ProcessAuthenticationWithTelemetryAsync(Boolean isAsync, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+2024-07-04 22:38:29.860 +03:00 [DBG] Connection id "0HN4SC3GHP562" stopped.
+2024-07-04 22:38:29.863 +03:00 [DBG] Connection id "0HN4SC3GHP561" stopped.
+2024-07-04 22:38:29.863 +03:00 [DBG] Connection id "0HN4SC3GHP562" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-07-04 22:38:29.867 +03:00 [DBG] Connection id "0HN4SC3GHP561" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-07-04 22:38:38.802 +03:00 [DBG] Authentication of the HTTPS connection timed out.
+2024-07-04 22:38:38.804 +03:00 [DBG] Connection id "0HN4SC3GHP55V" stopped.
+2024-07-04 22:38:38.806 +03:00 [DBG] Connection id "0HN4SC3GHP55V" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-07-04 22:38:39.031 +03:00 [DBG] Authentication of the HTTPS connection timed out.
+2024-07-04 22:38:39.034 +03:00 [DBG] Connection id "0HN4SC3GHP560" stopped.
+2024-07-04 22:38:39.035 +03:00 [DBG] Connection id "0HN4SC3GHP560" sending FIN because: "The Socket transport's send loop completed gracefully."

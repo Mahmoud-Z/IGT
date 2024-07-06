@@ -28,6 +28,9 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
+              "F:\\Work\\IGT\\IGT.Core\\IGT.Core.csproj": {
+                "projectPath": "F:\\Work\\IGT\\IGT.Core\\IGT.Core.csproj"
+              },
               "F:\\Work\\IGT\\IGT.Data\\IGT.Data.csproj": {
                 "projectPath": "F:\\Work\\IGT\\IGT.Data\\IGT.Data.csproj"
               }

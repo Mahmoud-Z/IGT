@@ -1794,6 +1794,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
+          "IGT.Core": "1.0.0",
           "IGT.Data": "1.0.0"
         },
         "compile": {

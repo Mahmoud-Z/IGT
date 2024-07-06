@@ -7,11 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IGT.Service.Interfaces.UserManagement
+namespace IGT.Service.Interfaces
 {
     public interface IUserManagmentService
     {
-        Task<BaseDTO<string>> createUserByAdmin(RegisterModel model);
+        Task<BaseDTO<string>> createUserByAdmin(CreateUserInputDTO model);
         Task<BaseDTO<List<GetAllUsersOutputDTO>>> getAllUsers(string? role);
     }
 }

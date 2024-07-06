@@ -4,12 +4,8 @@ using IGT.Data.Models;
 using IGT.Repository.UnitOfWork;
 using IGT.Service.Helpers;
 using IGT.Service.Helpers.CustomAttributes;
-using IGT.Service.Interfaces.EmailService;
-using IGT.Service.Interfaces.RoleManagment;
-using IGT.Service.Interfaces.UserManagement;
+using IGT.Service.Interfaces;
 using IGT.Service.Services;
-using IGT.Service.Services.EmailService;
-using IGT.Service.Services.RoleManagment;
 using IGT.Service.Services.UserManagement;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -109,7 +105,7 @@ using (var scope = app.Services.CreateScope())
     context.Database.Migrate();
 };
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment() || app.Configuration.GetValue<bool>("EnableSwaggerInProduction"))
 {
     app.UseSwagger();
     app.UseSwaggerUI();

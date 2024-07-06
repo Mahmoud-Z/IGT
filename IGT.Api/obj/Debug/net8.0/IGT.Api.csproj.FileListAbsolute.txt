@@ -9,7 +9,9 @@ F:\Work\IGT\IGT.Api\bin\Debug\net8.0\Azure.Core.dll
 F:\Work\IGT\IGT.Api\bin\Debug\net8.0\Azure.Identity.dll
 F:\Work\IGT\IGT.Api\bin\Debug\net8.0\Azure.Security.KeyVault.Certificates.dll
 F:\Work\IGT\IGT.Api\bin\Debug\net8.0\Azure.Security.KeyVault.Secrets.dll
+F:\Work\IGT\IGT.Api\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
 F:\Work\IGT\IGT.Api\bin\Debug\net8.0\Humanizer.dll
+F:\Work\IGT\IGT.Api\bin\Debug\net8.0\MailKit.dll
 F:\Work\IGT\IGT.Api\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 F:\Work\IGT\IGT.Api\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.OpenIdConnect.dll
 F:\Work\IGT\IGT.Api\bin\Debug\net8.0\Microsoft.AspNetCore.Authorization.dll
@@ -44,6 +46,7 @@ F:\Work\IGT\IGT.Api\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
 F:\Work\IGT\IGT.Api\bin\Debug\net8.0\Microsoft.OpenApi.dll
 F:\Work\IGT\IGT.Api\bin\Debug\net8.0\Microsoft.SqlServer.Server.dll
 F:\Work\IGT\IGT.Api\bin\Debug\net8.0\Microsoft.Win32.SystemEvents.dll
+F:\Work\IGT\IGT.Api\bin\Debug\net8.0\MimeKit.dll
 F:\Work\IGT\IGT.Api\bin\Debug\net8.0\Mono.TextTemplating.dll
 F:\Work\IGT\IGT.Api\bin\Debug\net8.0\Newtonsoft.Json.dll
 F:\Work\IGT\IGT.Api\bin\Debug\net8.0\RestSharp.dll
@@ -152,6 +155,7 @@ F:\Work\IGT\IGT.Api\obj\Debug\net8.0\IGT.Api.AssemblyInfo.cs
 F:\Work\IGT\IGT.Api\obj\Debug\net8.0\IGT.Api.csproj.CoreCompileInputs.cache
 F:\Work\IGT\IGT.Api\obj\Debug\net8.0\IGT.Api.MvcApplicationPartsAssemblyInfo.cs
 F:\Work\IGT\IGT.Api\obj\Debug\net8.0\IGT.Api.MvcApplicationPartsAssemblyInfo.cache
+F:\Work\IGT\IGT.Api\obj\Debug\net8.0\IGT.Api.sourcelink.json
 F:\Work\IGT\IGT.Api\obj\Debug\net8.0\staticwebassets.build.json
 F:\Work\IGT\IGT.Api\obj\Debug\net8.0\staticwebassets.development.json
 F:\Work\IGT\IGT.Api\obj\Debug\net8.0\staticwebassets\msbuild.IGT.Api.Microsoft.AspNetCore.StaticWebAssets.props
@@ -166,6 +170,3 @@ F:\Work\IGT\IGT.Api\obj\Debug\net8.0\refint\IGT.Api.dll
 F:\Work\IGT\IGT.Api\obj\Debug\net8.0\IGT.Api.pdb
 F:\Work\IGT\IGT.Api\obj\Debug\net8.0\IGT.Api.genruntimeconfig.cache
 F:\Work\IGT\IGT.Api\obj\Debug\net8.0\ref\IGT.Api.dll
-F:\Work\IGT\IGT.Api\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
-F:\Work\IGT\IGT.Api\bin\Debug\net8.0\MailKit.dll
-F:\Work\IGT\IGT.Api\bin\Debug\net8.0\MimeKit.dll
