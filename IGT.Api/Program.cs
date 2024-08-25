@@ -27,6 +27,7 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IAuthenticationServices, AuthenticationServices>();
 builder.Services.AddScoped<IUserManagmentService, UserManagmentService>();
 builder.Services.AddScoped<IRoleManagmentService, RoleManagmentService>();
+builder.Services.AddScoped<IPrivilegeManagmentService, PrivilegeManagmentService>();
 builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.Configure<JwtModel>(builder.Configuration.GetSection("Jwt"));
 builder.Services.AddIdentity<User, Role>()

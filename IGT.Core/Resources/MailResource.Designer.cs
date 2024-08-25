@@ -22,14 +22,14 @@ namespace IGT.Core.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class RoleManagmentResource {
+    public class MailResource {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal RoleManagmentResource() {
+        internal MailResource() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace IGT.Core.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("IGT.Core.Resources.RoleManagmentResource", typeof(RoleManagmentResource).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("IGT.Core.Resources.MailResource", typeof(MailResource).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,56 +61,38 @@ namespace IGT.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to All those priveleges weren&apos;t found.
+        ///   Looks up a localized string similar to Please find this token : $$.
         /// </summary>
-        public static string PrivilegesNotFound {
+        public static string ForgetPasswordBody {
             get {
-                return ResourceManager.GetString("PrivilegesNotFound", resourceCulture);
+                return ResourceManager.GetString("ForgetPasswordBody", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Role Already Exist.
+        ///   Looks up a localized string similar to Forgot Passwored Link.
         /// </summary>
-        public static string RoleAlreadyExists {
+        public static string ForgetPasswordSubject {
             get {
-                return ResourceManager.GetString("RoleAlreadyExists", resourceCulture);
+                return ResourceManager.GetString("ForgetPasswordSubject", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Role with name $$ has been deleted successfully.
+        ///   Looks up a localized string similar to Kindly find your password here : $$.
         /// </summary>
-        public static string RoleCreatedSuccessfully {
+        public static string NewPasswordBody {
             get {
-                return ResourceManager.GetString("RoleCreatedSuccessfully", resourceCulture);
+                return ResourceManager.GetString("NewPasswordBody", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Role with name $$ has been deleted successfully.
+        ///   Looks up a localized string similar to Account Password.
         /// </summary>
-        public static string RoleDeletedSuccessfully {
+        public static string NewPasswordSubject {
             get {
-                return ResourceManager.GetString("RoleDeletedSuccessfully", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Role with name $$ has been updated successfully.
-        /// </summary>
-        public static string RoleUpdatedSuccessfully {
-            get {
-                return ResourceManager.GetString("RoleUpdatedSuccessfully", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to This role doesn&apos;t exist.
-        /// </summary>
-        public static string ThisRoleDoesntExist {
-            get {
-                return ResourceManager.GetString("ThisRoleDoesntExist", resourceCulture);
+                return ResourceManager.GetString("NewPasswordSubject", resourceCulture);
             }
         }
     }

@@ -9,6 +9,8 @@ using IGT.Core.Dtos.UserManagment;
 namespace IGT.Api.Controllers
 {
     [CustomAuthorize]
+    [Route("api/[controller]")]
+    [ApiController]
     public class UserManagmentController : ControllerBase
     {
         private readonly IUserManagmentService _userManagmentService;

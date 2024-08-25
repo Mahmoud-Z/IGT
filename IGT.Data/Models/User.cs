@@ -12,4 +12,5 @@ public class User : IdentityUser
     public bool isTempUser { get; set; } = false;
     public DateTime? expiresAt { get; set; }
     public virtual ICollection<Session>? Sessions { get; set; }
+    public virtual ICollection<OTP>? OTPs { get; set; }
 }

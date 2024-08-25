@@ -22,6 +22,48 @@ namespace IGT.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("IGT.Data.Models.OTP", b =>
+                {
+                    b.Property<int>("OTPId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OTPId"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETUTCDATE()");
+
+                    b.Property<DateTime>("ExpiresAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsUsed")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<string>("OTPCode")
+                        .IsRequired()
+                        .HasMaxLength(6)
+                        .HasColumnType("nvarchar(6)");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("OTPId")
+                        .HasName("PK__OTP__B3E77E5CCF515C05");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("OTP");
+                });
+
             modelBuilder.Entity("IGT.Data.Models.Privilege", b =>
                 {
                     b.Property<long>("PrivilegeId")
@@ -38,9 +80,6 @@ namespace IGT.Data.Migrations
                         .HasMaxLength(255)
                         .IsUnicode(false)
                         .HasColumnType("varchar(255)");
-
-                    b.Property<bool>("IsAdmin")
-                        .HasColumnType("bit");
 
                     b.Property<bool>("IsGeneral")
                         .HasColumnType("bit");
@@ -63,52 +102,74 @@ namespace IGT.Data.Migrations
                         new
                         {
                             PrivilegeId = 1L,
-                            BackendURL = "AuthenticationController/addUser",
+                            BackendURL = "AuthenticationController/forgetPassword",
+                            Code = "forgetPassword",
+                            IsGeneral = true,
+                            IsSuperAdmin = false,
+                            Name = "forget password"
+                        },
+                        new
+                        {
+                            PrivilegeId = 2L,
+                            BackendURL = "AuthenticationController/resetPassword",
+                            Code = "resetPassword",
+                            IsGeneral = true,
+                            IsSuperAdmin = false,
+                            Name = "reset password"
+                        },
+                        new
+                        {
+                            PrivilegeId = 3L,
+                            BackendURL = "UserManagment/addUser",
                             Code = "addUser",
-                            IsAdmin = false,
                             IsGeneral = false,
                             IsSuperAdmin = false,
                             Name = "Add user"
                         },
                         new
                         {
-                            PrivilegeId = 2L,
-                            BackendURL = "",
-                            Code = "addMachine",
-                            IsAdmin = false,
+                            PrivilegeId = 4L,
+                            BackendURL = "UserManagment/getAllUsers",
+                            Code = "getAllUsers",
                             IsGeneral = false,
                             IsSuperAdmin = true,
-                            Name = "Add machine"
-                        },
-                        new
-                        {
-                            PrivilegeId = 3L,
-                            BackendURL = "",
-                            Code = "Machine status",
-                            IsAdmin = false,
-                            IsGeneral = false,
-                            IsSuperAdmin = false,
-                            Name = "Machine status"
-                        },
-                        new
-                        {
-                            PrivilegeId = 4L,
-                            BackendURL = "",
-                            Code = "bussinesAnalitics",
-                            IsAdmin = false,
-                            IsGeneral = false,
-                            IsSuperAdmin = false,
-                            Name = "Bussines analytics"
+                            Name = "Get all users"
                         },
                         new
                         {
                             PrivilegeId = 5L,
-                            BackendURL = "",
-                            Code = "editDeleteUser",
-                            IsAdmin = false,
+                            BackendURL = "RoleManagment/addRole",
+                            Code = "addRole",
                             IsGeneral = false,
                             IsSuperAdmin = false,
-                            Name = "EditDelete user"
+                            Name = "Add role"
+                        },
+                        new
+                        {
+                            PrivilegeId = 6L,
+                            BackendURL = "RoleManagment/updateRole",
+                            Code = "updateRole",
+                            IsGeneral = false,
+                            IsSuperAdmin = false,
+                            Name = "Update role"
+                        },
+                        new
+                        {
+                            PrivilegeId = 7L,
+                            BackendURL = "RoleManagment/deleteRole",
+                            Code = "deleteRole",
+                            IsGeneral = false,
+                            IsSuperAdmin = false,
+                            Name = "Delete role"
+                        },
+                        new
+                        {
+                            PrivilegeId = 8L,
+                            BackendURL = "RoleManagment/getRoles",
+                            Code = "getRoles",
+                            IsGeneral = false,
+                            IsSuperAdmin = false,
+                            Name = "Get role"
                         });
                 });
 
@@ -430,6 +491,11 @@ namespace IGT.Data.Migrations
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityRole");
 
+                    b.Property<string>("CreatedUserId")
+                        .HasMaxLength(500)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(500)");
+
                     b.Property<long?>("SystemStatusCodeId")
                         .HasColumnType("bigint");
 
@@ -440,18 +506,32 @@ namespace IGT.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "fd7928be-dbfb-4727-a8ea-dbd75b994932",
+                            Id = "a25bb9b1-da7c-4097-9662-2aa8ccee45d1",
                             ConcurrencyStamp = "1",
                             Name = "Admin",
-                            NormalizedName = "Admin"
+                            NormalizedName = "Admin",
+                            CreatedUserId = "-99"
                         },
                         new
                         {
-                            Id = "643bc1c8-c407-492f-af46-216427dfab49",
+                            Id = "9862d943-93cd-432c-b347-ccb20d76619a",
                             ConcurrencyStamp = "2",
                             Name = "User",
-                            NormalizedName = "User"
+                            NormalizedName = "User",
+                            CreatedUserId = "-99"
                         });
+                });
+
+            modelBuilder.Entity("IGT.Data.Models.OTP", b =>
+                {
+                    b.HasOne("IGT.Data.Models.User", "User")
+                        .WithMany("OTPs")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_OTP_REFERENCE_USER");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("IGT.Data.Models.Session", b =>
@@ -556,6 +636,8 @@ namespace IGT.Data.Migrations
 
             modelBuilder.Entity("IGT.Data.Models.User", b =>
                 {
+                    b.Navigation("OTPs");
+
                     b.Navigation("Sessions");
                 });
 #pragma warning restore 612, 618

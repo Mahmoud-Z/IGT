@@ -8,6 +8,6 @@ namespace IGT.Core.Enums
 {
     public enum RolesEnum
     {
-        SuperAdmin,Admin
+        SuperAdmin,Admin,Customer
     }
 }

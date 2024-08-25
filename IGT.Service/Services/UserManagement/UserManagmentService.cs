@@ -78,7 +78,7 @@ namespace IGT.Service.Services.UserManagement
                 return new BaseDTO<string>
                 {
                     IsSuccess = true,
-                    Data = $"User with name {user.FirstName + " " + user.LastName} has been created successfully",
+                    Data = AuthenticationResource.UserCreatedSuccessfully.Replace("$$",user.FirstName + " " + user.LastName),
                     Status = ResponseStatusEnum.Success.ToString(),
                 };
             }
@@ -93,8 +93,8 @@ namespace IGT.Service.Services.UserManagement
         }
         private void sendPassword(string password, string email)
         {
-            var newPassword = "Kindly find your password here : " + password;
-            var message = new Message(new string[] { email }, "Account Password", newPassword);
+            var newPassword = MailResource.NewPasswordBody.Replace("$$",password);
+            var message = new Message(new string[] { email }, MailResource.NewPasswordSubject, newPassword);
             _emailService.SendEmail(message);
         }
         public async Task<BaseDTO<List<GetAllUsersOutputDTO>>> getAllUsers(string? role)

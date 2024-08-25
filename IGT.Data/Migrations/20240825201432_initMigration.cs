@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace IGT.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class Init : Migration
+    public partial class initMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -52,8 +52,7 @@ namespace IGT.Data.Migrations
                     Code = table.Column<string>(type: "varchar(255)", unicode: false, maxLength: 255, nullable: false),
                     BackendURL = table.Column<string>(type: "varchar(255)", unicode: false, maxLength: 255, nullable: false),
                     IsGeneral = table.Column<bool>(type: "bit", nullable: false),
-                    IsSuperAdmin = table.Column<bool>(type: "bit", nullable: false),
-                    IsAdmin = table.Column<bool>(type: "bit", nullable: false)
+                    IsSuperAdmin = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -136,12 +135,37 @@ namespace IGT.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "OTP",
+                columns: table => new
+                {
+                    OTPId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    OTPCode = table.Column<string>(type: "nvarchar(6)", maxLength: 6, nullable: false),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETUTCDATE()"),
+                    ExpiresAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IsUsed = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK__OTP__B3E77E5CCF515C05", x => x.OTPId);
+                    table.ForeignKey(
+                        name: "FK_OTP_REFERENCE_USER",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Discriminator = table.Column<string>(type: "nvarchar(13)", maxLength: 13, nullable: false),
                     SystemStatusCodeId = table.Column<long>(type: "bigint", nullable: true),
+                    CreatedUserId = table.Column<string>(type: "varchar(500)", unicode: false, maxLength: 500, nullable: true),
                     Name = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true)
@@ -250,23 +274,26 @@ namespace IGT.Data.Migrations
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
-                columns: new[] { "Id", "ConcurrencyStamp", "Discriminator", "Name", "NormalizedName", "SystemStatusCodeId" },
+                columns: new[] { "Id", "ConcurrencyStamp", "CreatedUserId", "Discriminator", "Name", "NormalizedName", "SystemStatusCodeId" },
                 values: new object[,]
                 {
-                    { "643bc1c8-c407-492f-af46-216427dfab49", "2", "Role", "User", "User", null },
-                    { "fd7928be-dbfb-4727-a8ea-dbd75b994932", "1", "Role", "Admin", "Admin", null }
+                    { "9862d943-93cd-432c-b347-ccb20d76619a", "2", "-99", "Role", "User", "User", null },
+                    { "a25bb9b1-da7c-4097-9662-2aa8ccee45d1", "1", "-99", "Role", "Admin", "Admin", null }
                 });
 
             migrationBuilder.InsertData(
                 table: "Privilege",
-                columns: new[] { "PrivilegeId", "BackendURL", "Code", "IsAdmin", "IsGeneral", "IsSuperAdmin", "Name" },
+                columns: new[] { "PrivilegeId", "BackendURL", "Code", "IsGeneral", "IsSuperAdmin", "Name" },
                 values: new object[,]
                 {
-                    { 1L, "AuthenticationController/addUser", "addUser", false, false, false, "Add user" },
-                    { 2L, "", "addMachine", false, false, true, "Add machine" },
-                    { 3L, "", "Machine status", false, false, false, "Machine status" },
-                    { 4L, "", "bussinesAnalitics", false, false, false, "Bussines analytics" },
-                    { 5L, "", "editDeleteUser", false, false, false, "EditDelete user" }
+                    { 1L, "AuthenticationController/forgetPassword", "forgetPassword", true, false, "forget password" },
+                    { 2L, "AuthenticationController/resetPassword", "resetPassword", true, false, "reset password" },
+                    { 3L, "UserManagment/addUser", "addUser", false, false, "Add user" },
+                    { 4L, "UserManagment/getAllUsers", "getAllUsers", false, true, "Get all users" },
+                    { 5L, "RoleManagment/addRole", "addRole", false, false, "Add role" },
+                    { 6L, "RoleManagment/updateRole", "updateRole", false, false, "Update role" },
+                    { 7L, "RoleManagment/deleteRole", "deleteRole", false, false, "Delete role" },
+                    { 8L, "RoleManagment/getRoles", "getRoles", false, false, "Get role" }
                 });
 
             migrationBuilder.InsertData(
@@ -324,6 +351,11 @@ namespace IGT.Data.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_OTP_UserId",
+                table: "OTP",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_RolePrivilege_Id",
                 table: "RolePrivilege",
                 column: "Id");
@@ -356,6 +388,9 @@ namespace IGT.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "OTP");
 
             migrationBuilder.DropTable(
                 name: "RolePrivilege");

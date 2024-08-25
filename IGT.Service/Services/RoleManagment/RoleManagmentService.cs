@@ -22,12 +22,14 @@ namespace IGT.Service.Services
     {
         private readonly RoleManager<Role> _roleManager;
         private readonly IUnitOfWork _unitOfWork;
-        public RoleManagmentService(RoleManager<Role> roleManager, IUnitOfWork unitOfWork)
+        private readonly IConfiguration _configuration;
+        public RoleManagmentService(RoleManager<Role> roleManager, IUnitOfWork unitOfWork, IConfiguration configuration)
         {
             _roleManager = roleManager;
             _unitOfWork = unitOfWork;
+            _configuration = configuration;
         }
-        public async Task<BaseDTO<string>> AddRole(AddRoleInputDTO model)
+        public async Task<BaseDTO<string>> AddRole(AddRoleInputDTO model, string userId)
         {
             try
             {
@@ -36,7 +38,7 @@ namespace IGT.Service.Services
                     var privileges = await _unitOfWork.GetRepository<Privilege>().FindAllAsync(p => model.PrivilegeCodes.Contains(p.Code));
                     if (privileges.Any())
                     {
-                        var role = new Role { Name = model.Name,Privileges = privileges.ToList() };
+                        var role = new Role { Name = model.Name,Privileges = privileges.ToList(), CreatedUserId = userId };
                         var result = await _roleManager.CreateAsync(role);
 
                         if (!result.Succeeded)
@@ -51,7 +53,7 @@ namespace IGT.Service.Services
                         return new BaseDTO<string>
                         {
                             IsSuccess = true,
-                            Data = $"Role with name {role.Name} has been created successfully",
+                            Data = RoleManagmentResource.RoleCreatedSuccessfully.Replace("$$", role.Name),
                             Status = ResponseStatusEnum.Success.ToString(),
                         };
                     }
@@ -100,7 +102,7 @@ namespace IGT.Service.Services
                         return new BaseDTO<string>
                         {
                             IsSuccess = true,
-                            Data = $"Role with name {role.Name} has been updated successfully",
+                            Data = RoleManagmentResource.RoleUpdatedSuccessfully.Replace("$$", role.Name),
                             Status = ResponseStatusEnum.Success.ToString(),
                         };
                     }
@@ -145,7 +147,7 @@ namespace IGT.Service.Services
                     return new BaseDTO<string>
                     {
                         IsSuccess = true,
-                        Data = $"Role with name {role.Name} has been deleted successfully",
+                        Data = RoleManagmentResource.RoleDeletedSuccessfully.Replace("$$",role.Name),
                         Status = ResponseStatusEnum.Success.ToString(),
                     };
                 }
@@ -167,14 +169,47 @@ namespace IGT.Service.Services
         {
             try
             {
-                List<Role>? roles = (await _unitOfWork.GetRepository<Role>().FindAllAsync(r => (id == null || r.Id == id) &&
-                (r.SystemStatusCode == null || r.SystemStatusCode.Status != SystemStatusCodeEnum.DELETED.ToString())
-                && r.Name != RolesEnum.Admin.ToString(), new string []{ "Privileges", "SystemStatusCode" })).ToList();
+                List<Role>? roles = await _unitOfWork.GetRepository<Role>().FindAllAsync(r => r.CreatedUserId.Equals(id));
                 if (roles != null)
                 {
                     List<RolesDTO> rolesDTOs = new List<RolesDTO>();
                     foreach (var role in roles)
                     {                                                                         
+                        rolesDTOs.Add(new RolesDTO(role));
+                    }
+                    return new BaseDTO<List<RolesDTO>>
+                    {
+                        IsSuccess = true,
+                        Data = rolesDTOs,
+                        Status = ResponseStatusEnum.Success.ToString(),
+                    };
+                }
+                else
+                {
+                    throw new BussinessException(RoleManagmentResource.ThisRoleDoesntExist);
+                }
+            }
+            catch (BussinessException)
+            {
+                throw;
+            }
+            catch (Exception e)
+            {
+                throw new BussinessException(AuthenticationResource.GeneralError);
+            }
+        }
+        public async Task<BaseDTO<List<RolesDTO>>> GetRoleById(string? id)
+        {
+            try
+            {
+                List<Role>? roles = await _unitOfWork.GetRepository<Role>().FindAllAsync(r => (id == null || r.Id == id) &&
+                (r.SystemStatusCode == null || r.SystemStatusCode.Status != SystemStatusCodeEnum.DELETED.ToString())
+                && r.Name != RolesEnum.Admin.ToString(), new string[] { "Privileges", "SystemStatusCode" });
+                if (roles != null)
+                {
+                    List<RolesDTO> rolesDTOs = new List<RolesDTO>();
+                    foreach (var role in roles)
+                    {
                         rolesDTOs.Add(new RolesDTO(role));
                     }
                     return new BaseDTO<List<RolesDTO>>

@@ -10,7 +10,7 @@ namespace IGT.Service.Interfaces
 {
     public interface IRoleManagmentService
     {
-        Task<BaseDTO<string>> AddRole(AddRoleInputDTO model);
+        Task<BaseDTO<string>> AddRole(AddRoleInputDTO model,string userId);
         Task<BaseDTO<string>> UpdateRole(AddRoleInputDTO model);
         Task<BaseDTO<string>> DeleteRole(string rolename);
         Task<BaseDTO<List<RolesDTO>>> GetRoles(string? id);

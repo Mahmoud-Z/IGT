@@ -140,7 +140,7 @@ namespace IGT.Service.Services.UserManagement
                 return new BaseDTO<string>
                 {
                     IsSuccess = true,
-                    Data = $"User with name {user.FirstName + " " + user.LastName} has been created successfully",
+                    Data = AuthenticationResource.UserCreatedSuccessfully.Replace("$$", user.FirstName + " " + user.LastName),
                     Status = ResponseStatusEnum.Success.ToString(),
                 };
             }
@@ -167,7 +167,7 @@ namespace IGT.Service.Services.UserManagement
 
             return result.Succeeded ? string.Empty : "Sonething went wrong";
         }
-        private async Task<JwtSecurityToken> CreateJwtToken(User user)
+        public async Task<JwtSecurityToken> CreateJwtToken(User user)
         {
             var userClaims = await _userManager.GetClaimsAsync(user);
             var roles = await _userManager.GetRolesAsync(user);
@@ -207,7 +207,7 @@ namespace IGT.Service.Services.UserManagement
             {
                 new Claim(JwtRegisteredClaimNames.Sub, model.Username),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                new Claim("uid", "-99")
+                new Claim("uid", _configuration.GetSection("SuperAdmin:UserId").Value)
             }
             .Union(roleClaims);
 
@@ -233,8 +233,8 @@ namespace IGT.Service.Services.UserManagement
                     throw new BussinessException(AuthenticationResource.UserNotFound);
                 }
                 var token = await _userManager.GeneratePasswordResetTokenAsync(user);
-                var forgotPassworedLink = "Please find this token : " + token;
-                var message = new Message(new string[] {user.Email} , "Forgot Passwored Link" , forgotPassworedLink);
+                var forgotPassworedLink = MailResource.ForgetPasswordBody.Replace("$$", token);
+                var message = new Message(new string[] {user.Email} , MailResource.ForgetPasswordSubject , forgotPassworedLink);
                 _emailService.SendEmail(message);
                 return new BaseDTO<string>
                 {
@@ -339,7 +339,7 @@ namespace IGT.Service.Services.UserManagement
             _unitOfWork.GetRepository<Session>().UpdateRangeAsync(sessions);
             _unitOfWork.Complete();
         }
-        private async Task AddSession(string token,User user)
+        public async Task AddSession(string token,User user)
         {
             SystemStatusCode? systemStatusCode = _unitOfWork.SystemStatusCode.getActiveGeneralStatus();
             Session session = new Session()

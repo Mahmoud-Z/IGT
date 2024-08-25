@@ -97,7 +97,7 @@ namespace IGT.Repository.GenericRepository
             return query.AsQueryable();
         }
 
-        public async Task<IEnumerable<T>> FindAllAsync(Expression<Func<T, bool>> criteria, string[] includes = null)
+        public async Task<List<T>> FindAllAsync(Expression<Func<T, bool>> criteria, string[] includes = null)
         {
             IQueryable<T> query = _context.Set<T>();
 

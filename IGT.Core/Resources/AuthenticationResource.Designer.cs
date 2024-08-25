@@ -124,6 +124,15 @@ namespace IGT.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to User with name $$ has been created successfully.
+        /// </summary>
+        public static string UserCreatedSuccessfully {
+            get {
+                return ResourceManager.GetString("UserCreatedSuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Username is already registered!.
         /// </summary>
         public static string UsernameIsAlreadyRegistered {

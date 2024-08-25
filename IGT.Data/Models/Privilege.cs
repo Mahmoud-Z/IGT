@@ -14,7 +14,7 @@ namespace IGT.Data.Models
         public string BackendURL { get; set; } = null!;
         public bool IsGeneral { get; set; } = false;
         public bool IsSuperAdmin { get; set; } = false;
-        public bool IsAdmin { get; set; } = false;
+        //public bool IsAdmin { get; set; } = false;
         public virtual ICollection<Role> Roles { get; set; } = new List<Role>();
     }
 }

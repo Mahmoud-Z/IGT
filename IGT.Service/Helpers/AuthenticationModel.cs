@@ -2,6 +2,7 @@
 {
     public class AuthenticationModel
     {
+        public bool? IsRegistered { get; set; } = true;
         public string Message { get; set; }
         public bool IsAuthenticated { get; set; }
         public string Username { get; set; }

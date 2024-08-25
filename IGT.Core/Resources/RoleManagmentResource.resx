@@ -123,6 +123,15 @@
   <data name="RoleAlreadyExists" xml:space="preserve">
     <value>Role Already Exist</value>
   </data>
+  <data name="RoleCreatedSuccessfully" xml:space="preserve">
+    <value>Role with name $$ has been deleted successfully</value>
+  </data>
+  <data name="RoleDeletedSuccessfully" xml:space="preserve">
+    <value>Role with name $$ has been deleted successfully</value>
+  </data>
+  <data name="RoleUpdatedSuccessfully" xml:space="preserve">
+    <value>Role with name $$ has been updated successfully</value>
+  </data>
   <data name="ThisRoleDoesntExist" xml:space="preserve">
     <value>This role doesn't exist</value>
   </data>

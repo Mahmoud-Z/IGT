@@ -117,34 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="EmailIsAlreadyRegistered" xml:space="preserve">
-    <value>Email is already registered</value>
+  <data name="ForgetPasswordBody" xml:space="preserve">
+    <value>Please find this token : $$</value>
   </data>
-  <data name="EmailOrPasswordIsIncorrect" xml:space="preserve">
-    <value>Email or Password is incorrect!</value>
+  <data name="ForgetPasswordSubject" xml:space="preserve">
+    <value>Forgot Passwored Link</value>
   </data>
-  <data name="ExpireDateWrong" xml:space="preserve">
-    <value>Expire date should be in the future</value>
+  <data name="NewPasswordBody" xml:space="preserve">
+    <value>Kindly find your password here : $$</value>
   </data>
-  <data name="ExpiredUser" xml:space="preserve">
-    <value>This user has been expired</value>
-  </data>
-  <data name="GeneralError" xml:space="preserve">
-    <value>General error</value>
-  </data>
-  <data name="NewAndConfirmPasswordDoesntMatch" xml:space="preserve">
-    <value>New and confirm password doesn't match</value>
-  </data>
-  <data name="ThisRoleDoesntExist" xml:space="preserve">
-    <value>This role doesn't exist</value>
-  </data>
-  <data name="UserCreatedSuccessfully" xml:space="preserve">
-    <value>User with name $$ has been created successfully</value>
-  </data>
-  <data name="UsernameIsAlreadyRegistered" xml:space="preserve">
-    <value>Username is already registered!</value>
-  </data>
-  <data name="UserNotFound" xml:space="preserve">
-    <value>User not found</value>
+  <data name="NewPasswordSubject" xml:space="preserve">
+    <value>Account Password</value>
   </data>
 </root>

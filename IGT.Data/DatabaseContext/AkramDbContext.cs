@@ -53,8 +53,6 @@ public class AkramDbContext : IdentityDbContext<User>
                 .GetType();
             entity.Property(e => e.IsSuperAdmin)
                 .GetType();
-            entity.Property(e => e.IsAdmin)
-                .GetType();
         });
         modelBuilder.Entity<SystemStatusCode>(entity =>
         {
@@ -97,6 +95,9 @@ public class AkramDbContext : IdentityDbContext<User>
                         j.HasKey("RoleId", "Id");
                         j.ToTable("RolePrivilege");
                     });
+            entity.Property(e => e.CreatedUserId)
+                .HasMaxLength(500)
+                .IsUnicode(false);
         });
         modelBuilder.Entity<Session>(entity =>
         {
@@ -120,21 +121,43 @@ public class AkramDbContext : IdentityDbContext<User>
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_SESSION_REFERENCE_USER");
         });
+        modelBuilder.Entity<OTP>(entity =>
+        {
+            entity.HasKey(e => e.OTPId).HasName("PK__OTP__B3E77E5CCF515C05");
+            entity.Property(e => e.OTPCode)
+                .IsRequired()
+                .HasMaxLength(6);
+            entity.Property(e => e.CreatedAt)
+                .HasDefaultValueSql("GETUTCDATE()");
+            entity.Property(e => e.ExpiresAt)
+                .IsRequired();
+            entity.Property(e => e.IsUsed)
+                .IsRequired()
+                .HasDefaultValue(false);
+            entity.HasOne(e => e.User)
+                .WithMany(u => u.OTPs)
+                .HasForeignKey(e => e.UserId)
+                .OnDelete(DeleteBehavior.Cascade)
+                .HasConstraintName("FK_OTP_REFERENCE_USER");
+        });
         SeedRoles(modelBuilder);
         base.OnModelCreating(modelBuilder);
     }
     private static void SeedRoles(ModelBuilder builder)
     {
         builder.Entity<Role>().HasData(
-            new Role() { Name = "Admin", ConcurrencyStamp = "1", NormalizedName = "Admin" },
-            new Role() { Name = "User", ConcurrencyStamp = "2", NormalizedName = "User" }
+            new Role() { Name = "Admin", ConcurrencyStamp = "1", NormalizedName = "Admin", CreatedUserId = "-99" },
+            new Role() { Name = "User", ConcurrencyStamp = "2", NormalizedName = "User", CreatedUserId = "-99" }
         );
         builder.Entity<Privilege>().HasData(
-            new Privilege() { PrivilegeId = 1, Name = "Add user", Code = "addUser", BackendURL = "AuthenticationController/addUser", IsGeneral = false },
-            new Privilege() { PrivilegeId = 2, Name = "Add machine", Code = "addMachine", IsSuperAdmin = true, BackendURL = "", IsGeneral = false },
-            new Privilege() { PrivilegeId = 3, Name = "Machine status", Code = "Machine status", BackendURL = "", IsGeneral = false },
-            new Privilege() { PrivilegeId = 4, Name = "Bussines analytics", Code = "bussinesAnalitics", BackendURL = "", IsGeneral = false },
-            new Privilege() { PrivilegeId = 5, Name = "EditDelete user", Code = "editDeleteUser", BackendURL = "", IsGeneral = false }
+            new Privilege() { PrivilegeId = 1, Name = "forget password", Code = "forgetPassword", BackendURL = "AuthenticationController/forgetPassword", IsGeneral = true, IsSuperAdmin = false },
+            new Privilege() { PrivilegeId = 2, Name = "reset password", Code = "resetPassword", BackendURL = "AuthenticationController/resetPassword", IsGeneral = true, IsSuperAdmin = false },
+            new Privilege() { PrivilegeId = 3, Name = "Add user", Code = "addUser", BackendURL = "UserManagment/addUser", IsGeneral = false, IsSuperAdmin = false },
+            new Privilege() { PrivilegeId = 4, Name = "Get all users", Code = "getAllUsers", BackendURL = "UserManagment/getAllUsers", IsGeneral = false, IsSuperAdmin = true },
+            new Privilege() { PrivilegeId = 5, Name = "Add role", Code = "addRole", BackendURL = "RoleManagment/addRole", IsGeneral = false, IsSuperAdmin = false },
+            new Privilege() { PrivilegeId = 6, Name = "Update role", Code = "updateRole", BackendURL = "RoleManagment/updateRole", IsGeneral = false, IsSuperAdmin = false },
+            new Privilege() { PrivilegeId = 7, Name = "Delete role", Code = "deleteRole", BackendURL = "RoleManagment/deleteRole", IsGeneral = false, IsSuperAdmin = false },
+            new Privilege() { PrivilegeId = 8, Name = "Get role", Code = "getRoles", BackendURL = "RoleManagment/getRoles", IsGeneral = false, IsSuperAdmin = false }
         );
         builder.Entity<SystemStatusCode>().HasData(
             new SystemStatusCode() {SystemStatusCodeId = 1 ,Name = "DELETED", Status = "DELETED", Model="GENERAL" },

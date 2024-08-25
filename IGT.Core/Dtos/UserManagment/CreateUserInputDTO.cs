@@ -8,6 +8,7 @@ namespace IGT.Core.Dtos.UserManagment
 {
     public class CreateUserInputDTO
     {
+        public string? userId { get; set; }
         public string? FirstName { get; set; }
 
         public string? LastName { get; set; }

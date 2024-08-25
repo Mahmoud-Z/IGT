@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace IGT.Api.Controllers
 {
     [CustomAuthorize]
+    [Route("api/[controller]")]
+    [ApiController]
     public class RoleManagmentController : ControllerBase
     {
         private readonly IRoleManagmentService _roleManagmentService;
@@ -24,7 +26,8 @@ namespace IGT.Api.Controllers
                 return BadRequest(ModelState);
             try
             {
-                var result = await _roleManagmentService.AddRole(model);
+                var userId = User.FindFirst("uid")?.Value;
+                var result = await _roleManagmentService.AddRole(model, userId);
 
                 return Ok(result);
             }
@@ -65,14 +68,15 @@ namespace IGT.Api.Controllers
                 return Ok(ex.ErrorObject);
             }
         }
-        [HttpPost("getRoles")]
-        public async Task<IActionResult> GetRoles([FromBody] string? roleId)
+        [HttpGet("getRoles")]
+        public async Task<IActionResult> GetRoles()
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
             try
             {
-                var result = await _roleManagmentService.GetRoles(roleId);
+                var userId = User.FindFirst("uid")?.Value;
+                var result = await _roleManagmentService.GetRoles(userId);
 
                 return Ok(result);
             }
