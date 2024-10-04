@@ -180,7 +180,7 @@ namespace IGT.Service.Services.UserManagement
             {
                 new Claim("username", user.UserName),
                 new Claim("jti", Guid.NewGuid().ToString()),
-                new Claim("mail", user.Email),
+                user.Email == null ? new Claim("phoneNumber", user.PhoneNumber) : new Claim("mail", user.Email),
                 new Claim("uid", user.Id)
             }
             .Union(userClaims)

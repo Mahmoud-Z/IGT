@@ -4,6 +4,7 @@ using IGT.Data.DatabaseContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IGT.Data.Migrations
 {
     [DbContext(typeof(AkramDbContext))]
-    partial class AkramDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241004163031_initmigratation")]
+    partial class initmigratation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -505,7 +508,7 @@ namespace IGT.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "9b836ebf-07e5-4bcb-9a79-60e347204f4a",
+                            Id = "93e5f7ab-048c-424a-807f-f117b5ca3067",
                             ConcurrencyStamp = "1",
                             Name = "Admin",
                             NormalizedName = "Admin",
@@ -513,18 +516,10 @@ namespace IGT.Data.Migrations
                         },
                         new
                         {
-                            Id = "8eacacb4-c241-4b55-b90e-dfa0b96ad3bc",
+                            Id = "12ce16c4-ffb6-46fe-858e-0b7a48425a5f",
                             ConcurrencyStamp = "2",
                             Name = "User",
                             NormalizedName = "User",
-                            CreatedUserId = "-99"
-                        },
-                        new
-                        {
-                            Id = "594efda7-754f-4ce9-9868-20e346ed6754",
-                            ConcurrencyStamp = "3",
-                            Name = "Customer",
-                            NormalizedName = "Customer",
                             CreatedUserId = "-99"
                         });
                 });

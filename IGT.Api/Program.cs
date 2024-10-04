@@ -5,6 +5,7 @@ using IGT.Repository.UnitOfWork;
 using IGT.Service.Helpers;
 using IGT.Service.Helpers.CustomAttributes;
 using IGT.Service.Interfaces;
+using IGT.Service.Interfaces.UserManagement;
 using IGT.Service.Services;
 using IGT.Service.Services.UserManagement;
 using Microsoft.AspNetCore.Authentication;
@@ -29,6 +30,8 @@ builder.Services.AddScoped<IUserManagmentService, UserManagmentService>();
 builder.Services.AddScoped<IRoleManagmentService, RoleManagmentService>();
 builder.Services.AddScoped<IPrivilegeManagmentService, PrivilegeManagmentService>();
 builder.Services.AddScoped<IEmailService, EmailService>();
+builder.Services.AddScoped<IOTPManagmentService, OTPManagmentService>();
+builder.Services.AddScoped<IRobostaUsersManagmentService, RobostaUsersManagmentService>();
 builder.Services.Configure<JwtModel>(builder.Configuration.GetSection("Jwt"));
 builder.Services.AddIdentity<User, Role>()
     .AddEntityFrameworkStores<AkramDbContext>()

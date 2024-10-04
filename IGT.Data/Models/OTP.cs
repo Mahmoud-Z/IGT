@@ -14,7 +14,7 @@ namespace IGT.Data.Models
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public DateTime ExpiresAt { get; set; } = DateTime.Now.AddMinutes(-1.5);
         public bool IsUsed { get; set; } = false;
-        public string UserId { get; set; }
-        public virtual User? User { get; set; }
+        //public string UserId { get; set; }
+        //public virtual User? User { get; set; }
     }
 }

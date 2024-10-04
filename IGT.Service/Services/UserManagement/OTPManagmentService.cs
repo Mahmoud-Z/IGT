@@ -1,9 +1,13 @@
 ﻿using IGT.Core.Dtos;
+using IGT.Core.Dtos.UserManagment;
 using IGT.Core.Enums;
 using IGT.Core.Resources;
 using IGT.Data.Models;
 using IGT.Repository.UnitOfWork;
+using IGT.Service.Helpers.EmailConfiguration;
 using IGT.Service.Helpers.Exceptions;
+using IGT.Service.Interfaces;
+using IGT.Service.Interfaces.UserManagement;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -14,30 +18,36 @@ using System.Threading.Tasks;
 
 namespace IGT.Service.Services.UserManagement
 {
-    public class OTPManagmentService
+    public class OTPManagmentService : IOTPManagmentService
     {
         private readonly UserManager<User> _userManager;
+        private readonly IEmailService _emailService;
         private readonly IUnitOfWork _unitOfWork;
         private readonly int length = 6;
-        private readonly float OTPLifeTime = -1.5f;
+        private readonly float OTPLifeTime = 1.5f;
         private readonly int OTPBlockTime = -15;
-        public OTPManagmentService(UserManager<User> userManager, IUnitOfWork unitOfWork)
+        public OTPManagmentService(UserManager<User> userManager, IUnitOfWork unitOfWork, IEmailService emailService)
         {
             _unitOfWork = unitOfWork;
             _userManager = userManager;
+            _emailService = emailService;
         }
         public async Task<BaseDTO<string>> SendOTP(string phoneNumber)
         {
             try
             {
                 await CanSendOTPAsync(phoneNumber);
+                string otpCode = GenerateNumericOTP();
                 OTP oTP = new OTP()
                 {
-                    OTPCode = GenerateNumericOTP(),
+                    OTPCode = otpCode,
                     ExpiresAt = DateTime.Now.AddMinutes(OTPLifeTime),
                     PhoneNumber = phoneNumber
                 };
+                var message = new Message(new string[] { phoneNumber }, "OTP", otpCode);
+                _emailService.SendEmail(message);
                 await _unitOfWork.GetRepository<OTP>().AddAsync(oTP);
+                await _unitOfWork.CompleteAsync();
                 return new BaseDTO<string>
                 {
                     IsSuccess = true,
@@ -49,7 +59,7 @@ namespace IGT.Service.Services.UserManagement
             {
                 throw;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 throw new BussinessException(AuthenticationResource.GeneralError);
             }
@@ -64,18 +74,18 @@ namespace IGT.Service.Services.UserManagement
                 throw new BussinessException("You have been suspende for 15 minutes");
             }
         }
-        public async Task VerifyOTP(string phoneNumber, string otpCode)
+        public async Task VerifyOTP(RobostaLoginInputDTO model)
         {
             try
             {
-                var user = await _userManager.Users.FirstOrDefaultAsync(u => u.PhoneNumber == phoneNumber);
+                var user = await _userManager.Users.FirstOrDefaultAsync(u => u.PhoneNumber == model.phoneNumber);
                 if (user == null)
                 {
                     throw new BussinessException("Phone number not found");
                 }
 
                 var otp = await _unitOfWork.GetRepository<OTP>()
-                    .FindAsync(o => o.PhoneNumber == phoneNumber && o.OTPCode == otpCode && !o.IsUsed && o.ExpiresAt >= DateTime.Now.AddMinutes(-1.5));
+                    .FindAsync(o => o.PhoneNumber == model.phoneNumber && o.OTPCode == model.otpCode && !o.IsUsed && o.ExpiresAt >= DateTime.Now);
 
                 if (otp == null)
                 {
@@ -83,8 +93,8 @@ namespace IGT.Service.Services.UserManagement
                 }
 
                 otp.IsUsed = true;
-                await _unitOfWork.GetRepository<OTP>().AddAsync(otp);
-                await _unitOfWork.CompleteAsync();
+                _unitOfWork.GetRepository<OTP>().Update(otp);
+                _unitOfWork.Complete();
             }
             catch (BussinessException)
             {

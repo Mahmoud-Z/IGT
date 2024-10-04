@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace IGT.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class initMigration : Migration
+    public partial class initmigratation : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -145,17 +145,16 @@ namespace IGT.Data.Migrations
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETUTCDATE()"),
                     ExpiresAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     IsUsed = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK__OTP__B3E77E5CCF515C05", x => x.OTPId);
                     table.ForeignKey(
-                        name: "FK_OTP_REFERENCE_USER",
+                        name: "FK_OTP_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -277,8 +276,8 @@ namespace IGT.Data.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "CreatedUserId", "Discriminator", "Name", "NormalizedName", "SystemStatusCodeId" },
                 values: new object[,]
                 {
-                    { "9862d943-93cd-432c-b347-ccb20d76619a", "2", "-99", "Role", "User", "User", null },
-                    { "a25bb9b1-da7c-4097-9662-2aa8ccee45d1", "1", "-99", "Role", "Admin", "Admin", null }
+                    { "12ce16c4-ffb6-46fe-858e-0b7a48425a5f", "2", "-99", "Role", "User", "User", null },
+                    { "93e5f7ab-048c-424a-807f-f117b5ca3067", "1", "-99", "Role", "Admin", "Admin", null }
                 });
 
             migrationBuilder.InsertData(

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IGT.Data.Migrations
 {
     [DbContext(typeof(AkramDbContext))]
-    [Migration("20240825201432_initMigration")]
-    partial class initMigration
+    [Migration("20241004165128_updateDataSeeding")]
+    partial class updateDataSeeding
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -56,7 +56,6 @@ namespace IGT.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("OTPId")
@@ -509,7 +508,7 @@ namespace IGT.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "a25bb9b1-da7c-4097-9662-2aa8ccee45d1",
+                            Id = "9b836ebf-07e5-4bcb-9a79-60e347204f4a",
                             ConcurrencyStamp = "1",
                             Name = "Admin",
                             NormalizedName = "Admin",
@@ -517,24 +516,27 @@ namespace IGT.Data.Migrations
                         },
                         new
                         {
-                            Id = "9862d943-93cd-432c-b347-ccb20d76619a",
+                            Id = "8eacacb4-c241-4b55-b90e-dfa0b96ad3bc",
                             ConcurrencyStamp = "2",
                             Name = "User",
                             NormalizedName = "User",
+                            CreatedUserId = "-99"
+                        },
+                        new
+                        {
+                            Id = "594efda7-754f-4ce9-9868-20e346ed6754",
+                            ConcurrencyStamp = "3",
+                            Name = "Customer",
+                            NormalizedName = "Customer",
                             CreatedUserId = "-99"
                         });
                 });
 
             modelBuilder.Entity("IGT.Data.Models.OTP", b =>
                 {
-                    b.HasOne("IGT.Data.Models.User", "User")
+                    b.HasOne("IGT.Data.Models.User", null)
                         .WithMany("OTPs")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("FK_OTP_REFERENCE_USER");
-
-                    b.Navigation("User");
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("IGT.Data.Models.Session", b =>

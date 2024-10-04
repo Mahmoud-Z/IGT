@@ -15,44 +15,50 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using IGT.Service.Interfaces;
+using IGT.Service.Interfaces.UserManagement;
+using IGT.Core.Dtos.UserManagment;
 
 namespace IGT.Service.Services.UserManagement
 {
-    public class RobostaUsersManagmentServices
+    public class RobostaUsersManagmentService : IRobostaUsersManagmentService
     {
         private readonly UserManager<User> _userManager;
         private readonly RoleManager<Role> _roleManager;
         private readonly IUnitOfWork _unitOfWork;
         private readonly IAuthenticationServices _authenticationServices;
-        public RobostaUsersManagmentServices(UserManager<User> userManager, IUnitOfWork unitOfWork, 
-            IAuthenticationServices authenticationServices, RoleManager<Role> roleManager)
+        private readonly IOTPManagmentService _oTPManagmentService;
+
+        public RobostaUsersManagmentService(UserManager<User> userManager, IUnitOfWork unitOfWork, 
+            IAuthenticationServices authenticationServices, RoleManager<Role> roleManager, IOTPManagmentService oTPManagmentService)
         {
             _unitOfWork = unitOfWork;
             _userManager = userManager;
             _authenticationServices = authenticationServices;
             _roleManager = roleManager;
+            _oTPManagmentService = oTPManagmentService;
         }
-        public async Task<BaseDTO<AuthenticationModel>> Login(string phoneNumber)
+        public async Task<BaseDTO<AuthenticationModel>> RobostaLogin(RobostaLoginInputDTO model)
         {
             try
             {
                 var authModel = new AuthenticationModel();
-                var user = await _userManager.Users.FirstOrDefaultAsync(u => u.PhoneNumber == phoneNumber);
+                var user = await _userManager.Users.FirstOrDefaultAsync(u => u.PhoneNumber == model.phoneNumber);
 
                 if (user == null)
                 {
                     user = new User
                     {
-                        UserName = phoneNumber,
-                        PhoneNumber = phoneNumber
+                        UserName = "dgsgs",
+                        PhoneNumber = model.phoneNumber
                     };
-                    await _userManager.AddToRoleAsync(user, RolesEnum.Customer.ToString());
                     var result = await _userManager.CreateAsync(user);
+                    await _userManager.AddToRoleAsync(user, RolesEnum.Customer.ToString());
                     if (!result.Succeeded)
                     {
                         throw new BussinessException("Failed to create a new user.");
                     }
                 }
+                await _oTPManagmentService.VerifyOTP(model);
                 var jwtSecurityToken = await _authenticationServices.CreateJwtToken(user);
                 var rolesList = await _userManager.GetRolesAsync(user);
                 authModel.IsAuthenticated = true;
@@ -81,7 +87,7 @@ namespace IGT.Service.Services.UserManagement
                 throw new BussinessException(AuthenticationResource.GeneralError);
             }
         }
-        public async Task<BaseDTO<string>> register(RegisterModel model)
+        public async Task<BaseDTO<string>> RobostaRegister(RegisterModel model)
         {
             try
             {

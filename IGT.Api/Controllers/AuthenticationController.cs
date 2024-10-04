@@ -3,15 +3,9 @@ using IGT.Service.Helpers;
 using IGT.Service.Helpers.CustomAttributes;
 using IGT.Service.Helpers.EmailConfiguration;
 using IGT.Service.Helpers.Exceptions;
-using IGT.Service.Helpers.Valiodators;
 using IGT.Service.Interfaces;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
-using Serilog;
-using System.ComponentModel.DataAnnotations;
-using System.Data;
 
 namespace IGT.Api.Controllers
 {
@@ -46,14 +40,33 @@ namespace IGT.Api.Controllers
             }
         }
 
-        [HttpPost("register")]
-        public async Task<IActionResult> Register([FromBody] RegisterModel model)
+        //[HttpPost("register")]
+        //public async Task<IActionResult> Register([FromBody] RegisterModel model)
+        //{
+        //    if (!ModelState.IsValid)
+        //        return BadRequest(ModelState);
+        //    try
+        //    {
+        //        var result = await _authenticationServices.register(model);
+
+        //        return Ok(result);
+        //    }
+        //    catch (BussinessException ex)
+        //    {
+        //        return Ok(ex.ErrorObject);
+        //    }
+        //}
+
+        [CustomAuthorize]
+        [HttpPost("forgetPassword")]
+        public async Task<IActionResult> ForgetPassword([FromBody] TokenRequestModel model)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
             try
             {
-                var result = await _authenticationServices.register(model);
+                var userEmail = User.FindFirst("mail")?.Value;
+                var result = await _authenticationServices.forgetPassword(userEmail);
 
                 return Ok(result);
             }
@@ -62,10 +75,9 @@ namespace IGT.Api.Controllers
                 return Ok(ex.ErrorObject);
             }
         }
-
         [CustomAuthorize]
-        [HttpPost("forgetPassword")]
-        public async Task<IActionResult> ForgetPassword([FromBody] TokenRequestModel model)
+        [HttpPost("forgetPassword2")]
+        public async Task<IActionResult> ForgetPassword2([FromBody] TokenRequestModel model)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);

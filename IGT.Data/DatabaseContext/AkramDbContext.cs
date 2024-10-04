@@ -134,11 +134,11 @@ public class AkramDbContext : IdentityDbContext<User>
             entity.Property(e => e.IsUsed)
                 .IsRequired()
                 .HasDefaultValue(false);
-            entity.HasOne(e => e.User)
-                .WithMany(u => u.OTPs)
-                .HasForeignKey(e => e.UserId)
-                .OnDelete(DeleteBehavior.Cascade)
-                .HasConstraintName("FK_OTP_REFERENCE_USER");
+            //entity.HasOne(e => e.User)
+            //    .WithMany(u => u.OTPs)
+            //    .HasForeignKey(e => e.UserId)
+            //    .OnDelete(DeleteBehavior.Cascade)
+            //    .HasConstraintName("FK_OTP_REFERENCE_USER");
         });
         SeedRoles(modelBuilder);
         base.OnModelCreating(modelBuilder);
@@ -147,7 +147,8 @@ public class AkramDbContext : IdentityDbContext<User>
     {
         builder.Entity<Role>().HasData(
             new Role() { Name = "Admin", ConcurrencyStamp = "1", NormalizedName = "Admin", CreatedUserId = "-99" },
-            new Role() { Name = "User", ConcurrencyStamp = "2", NormalizedName = "User", CreatedUserId = "-99" }
+            new Role() { Name = "User", ConcurrencyStamp = "2", NormalizedName = "User", CreatedUserId = "-99" },
+            new Role() { Name = "Customer", ConcurrencyStamp = "3", NormalizedName = "Customer", CreatedUserId = "-99" }
         );
         builder.Entity<Privilege>().HasData(
             new Privilege() { PrivilegeId = 1, Name = "forget password", Code = "forgetPassword", BackendURL = "AuthenticationController/forgetPassword", IsGeneral = true, IsSuperAdmin = false },
