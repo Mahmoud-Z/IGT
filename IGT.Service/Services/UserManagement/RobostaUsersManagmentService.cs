@@ -48,7 +48,7 @@ namespace IGT.Service.Services.UserManagement
                 {
                     user = new User
                     {
-                        UserName = "dgsgs",
+                        UserName = "Customer_" + model.phoneNumber,
                         PhoneNumber = model.phoneNumber
                     };
                     var result = await _userManager.CreateAsync(user);
